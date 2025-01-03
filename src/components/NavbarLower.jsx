@@ -1,5 +1,8 @@
+("use client");
 import React, { useEffect } from "react";
 import { NavLink } from "react-router";
+import { Dropdown } from "flowbite-react";
+import { FaAngleDown } from "react-icons/fa";
 
 const NavbarLower = () => {
   let ddStyle = ({ isActive }) => ({
@@ -7,10 +10,11 @@ const NavbarLower = () => {
   });
   return (
     <div
-      className="w-screen hidden md:flex flex-col justify-center items-center shadow-md shadow-gray-200"
+      className="sticky top-0 z-30 w-screen hidden md:flex flex-col justify-center items-center 
+      shadow-md shadow-gray-200"
       style={{ backgroundColor: "#292560" }}
     >
-      <div className="px-4 container h-20 flex justify-between items-center">
+      <div className="px-4 sm:px-7 w-full sm:min-w-[640px] md:min-w-[798px] lg:min-w-[1024px] h-20 flex justify-between items-center">
         {/* Choose Category */}
         <div className="h-full flex items-center">
           <select
@@ -31,157 +35,92 @@ const NavbarLower = () => {
         <nav className="h-full flex items-center">
           <ul className="relative flex items-center md:gap-3 lg:gap-5 text-white font-semibold">
             <li>
-              <NavLink to="/" style={ddStyle} className="hover:text-yellow-400">
+              <NavLink
+                to="/"
+                style={ddStyle}
+                className="hover:text-yellow-400 outline-none"
+              >
                 HOME
               </NavLink>
             </li>
 
             {/* Electronics */}
             <li>
-              <button
-                id="dropdownHoverButton"
-                data-dropdown-toggle="dropdownHover"
-                data-dropdown-trigger="hover"
-                data-dropdown-delay={200}
-                className="text-white  focus:outline-none rounded-lg 
-                py-2.5 text-center inline-flex items-center"
-                type="button"
+              <Dropdown
+                label=""
+                dismissOnClick={true}
+                renderTrigger={() => (
+                  <button className="flex items-center gap-2 outline-none hover:text-yellow-400">
+                    ELECTRONICS <FaAngleDown />
+                  </button>
+                )}
+                className="mt-2"
               >
-                ELECTRONICS
-                <svg
-                  className="w-2.5 h-2.5 ms-3"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 10 6"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="m1 1 4 4 4-4"
-                  />
-                </svg>
-              </button>
-
-              <div
-                id="dropdownHover"
-                className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow 
-                w-44"
-              >
-                <ul
-                  className="py-2 text-sm text-gray-700 dark:text-gray-200"
-                  aria-labelledby="dropdownHoverButton"
-                >
-                  <li>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    >
-                      Dashboard
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    >
-                      Settings
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    >
-                      Earnings
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    >
-                      Sign out
-                    </a>
-                  </li>
-                </ul>
-              </div>
+                <div className="grid grid-cols-2 grid-rows-9 gap-x-3 py-2">
+                  <Dropdown.Item>All Mobile Phones </Dropdown.Item>
+                  <Dropdown.Item>All Mobile Accessories </Dropdown.Item>
+                  <Dropdown.Item>Cases & Covers </Dropdown.Item>
+                  <Dropdown.Item>Screen Protectors </Dropdown.Item>
+                  <Dropdown.Item>Power Banks </Dropdown.Item>
+                  <Dropdown.Item>All Certified Refurbished </Dropdown.Item>
+                  <Dropdown.Item>Tablets</Dropdown.Item>
+                  <Dropdown.Item>Wearable Devices</Dropdown.Item>
+                  <Dropdown.Item>Smart Home </Dropdown.Item>
+                  <Dropdown.Item>Musical Instruments</Dropdown.Item>
+                  <Dropdown.Item>Gaming Consoles </Dropdown.Item>
+                  <Dropdown.Item>All Electronics </Dropdown.Item>
+                  <Dropdown.Item>Air Conditioners</Dropdown.Item>
+                  <Dropdown.Item>Refrigerators </Dropdown.Item>
+                  <Dropdown.Item>Washing Machines </Dropdown.Item>
+                  <Dropdown.Item>Kitchen & Home Appliances </Dropdown.Item>
+                  <Dropdown.Item>Heating& Cooling Appliances </Dropdown.Item>
+                  <Dropdown.Item>All Appliances</Dropdown.Item>
+                </div>
+              </Dropdown>
             </li>
 
             {/* Appliance */}
             <li>
-              <button
-                id="dropdownHoverButton2"
-                data-dropdown-toggle="dropdownHover2"
-                data-dropdown-trigger="hover"
-                data-dropdown-delay={200}
-                className="text-white  focus:outline-none rounded-lg 
-                py-2.5 text-center inline-flex items-center"
-                type="button"
+              <Dropdown
+                label=""
+                dismissOnClick={true}
+                renderTrigger={() => (
+                  <button className="flex items-center gap-2 outline-none hover:text-yellow-400">
+                    APPLIANCE <FaAngleDown />
+                  </button>
+                )}
+                className="py-0 mt-2"
               >
-                APPLIANCE
-                <svg
-                  className="w-2.5 h-2.5 ms-3"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 10 6"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="m1 1 4 4 4-4"
-                  />
-                </svg>
-              </button>
-
-              <div
-                id="dropdownHover2"
-                className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
-              >
-                <ul
-                  className="py-2 text-sm text-gray-700 dark:text-gray-200"
-                  aria-labelledby="dropdownHoverButton2"
-                >
-                  <li>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 hover:bg-gray-100 
-                       "
-                    >
-                      Dashboard
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="block px-4 py-2 hover:bg-gray-100  ">
-                      Settings
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="block px-4 py-2 hover:bg-gray-100  ">
-                      Earnings
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="block px-4 py-2 hover:bg-gray-100  ">
-                      Sign out
-                    </a>
-                  </li>
-                </ul>
-              </div>
+                <div className="grid grid-cols-2 grid-rows-9 gap-x-3 py-2">
+                  <Dropdown.Item>All Mobile Phones </Dropdown.Item>
+                  <Dropdown.Item>All Mobile Accessories </Dropdown.Item>
+                  <Dropdown.Item>Cases & Covers </Dropdown.Item>
+                  <Dropdown.Item>Screen Protectors </Dropdown.Item>
+                  <Dropdown.Item>Power Banks </Dropdown.Item>
+                  <Dropdown.Item>All Certified Refurbished </Dropdown.Item>
+                  <Dropdown.Item>Tablets</Dropdown.Item>
+                  <Dropdown.Item>Wearable Devices</Dropdown.Item>
+                  <Dropdown.Item>Smart Home </Dropdown.Item>
+                  <Dropdown.Item>Musical Instruments</Dropdown.Item>
+                  <Dropdown.Item>Gaming Consoles </Dropdown.Item>
+                  <Dropdown.Item>All Electronics </Dropdown.Item>
+                  <Dropdown.Item>Air Conditioners</Dropdown.Item>
+                  <Dropdown.Item>Refrigerators </Dropdown.Item>
+                  <Dropdown.Item>Washing Machines </Dropdown.Item>
+                  <Dropdown.Item>Kitchen & Home Appliances </Dropdown.Item>
+                  <Dropdown.Item>Heating& Cooling Appliances </Dropdown.Item>
+                  <Dropdown.Item>All Appliances</Dropdown.Item>
+                </div>
+              </Dropdown>
             </li>
 
             <li>
-              <NavLink to="/" className="hover:text-yellow-400">
+              <NavLink to="/" className="hover:text-yellow-400 outline-none">
                 ABOUT US
               </NavLink>
             </li>
             <li>
-              <NavLink to="/" className="hover:text-yellow-400">
+              <NavLink to="/" className="hover:text-yellow-400 outline-none">
                 CONTACT US
               </NavLink>
             </li>

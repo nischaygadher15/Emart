@@ -48,8 +48,14 @@ const NavbarUpper = () => {
   };
 
   return (
-    <div className="w-screen flex flex-col justify-center items-center bg-white shadow-md shadow-gray-200">
-      <div className="px-4 container h-20 flex justify-between items-center sm:gap-7 md:gap-5">
+    <div
+      className="z-20 w-screen flex flex-col justify-center items-center bg-white 
+    shadow-md shadow-gray-200"
+    >
+      <div
+        className="px-4 sm:px-7 w-full sm:min-w-[640px] md:min-w-[798px] lg:min-w-[1024px]
+       h-20 flex justify-between items-center sm:gap-7 md:gap-5"
+      >
         {/* Logo  */}
         <div className="flex items-center gap-3 text-3xl">
           <button
@@ -91,8 +97,9 @@ const NavbarUpper = () => {
             />
 
             <button
-              className="text-black rounded-full lg:rounded-s-none lg:rounded-e-md p-3 md:p-4 lg:py-4 lg:px-5 text-xl"
-              style={{ backgroundColor: "#FFC516" }}
+              className={`text-black rounded-full lg:rounded-s-none lg:rounded-e-md 
+              p-3 md:p-4 lg:py-4 lg:px-5 text-xl
+              bg-[#FFC516]`}
               onClick={handleSearch}
               id="searchBtn"
             >
