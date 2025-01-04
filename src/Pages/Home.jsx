@@ -12,7 +12,7 @@ import "../App.css";
 import ProductList from "../Data/ProductsList";
 
 const Home = () => {
-  let [slide, setSlide] = useState(false);
+  let [slide, setSlide] = useState(true);
   let [rangeVal, setRangeVal] = useState([500, 3500]);
   let product = [...ProductList];
 
@@ -24,10 +24,21 @@ const Home = () => {
           slide={slide}
           slideInterval={3000}
           leftControl={
-            <RiArrowLeftWideFill className="text-3xl sm:text-4xl lg:text-5xl text-gray-800" />
+            window.screen.width > 640 ? (
+              <RiArrowLeftWideFill
+                className="-translate-x-5 text-3xl sm:text-4xl lg:text-5xl 
+              text-gray-800"
+              />
+            ) : (
+              <div className="opacity-0 min-w-full min-h-full px-5"></div>
+            )
           }
           rightControl={
-            <RiArrowRightWideFill className="text-3xl sm:text-4xl lg:text-5xl text-gray-800" />
+            window.screen.width > 640 ? (
+              <RiArrowRightWideFill className="translate-x-5 text-3xl sm:text-4xl lg:text-5xl text-gray-800" />
+            ) : (
+              <div className="hidden"></div>
+            )
           }
           onMouseEnter={() => setSlide(false)}
           onMouseLeave={() => setSlide(true)}
@@ -39,15 +50,15 @@ const Home = () => {
               alt="Carousel Banner 1"
               className="w-full h-full object-center sm:object-cover"
             />
-            <div className="w-[45%] sm:w-[50%] h-full absolute top-0 left-12 sm:left-20 md:left-24 z-10 flex flex-col justify-center gap-4 md:gap-6 lg:gap-8 xl:gap-11">
-              <p className="text-wrap text-base xl:text-xl">
+            <div className="w-[50%] h-full absolute top-0 left-1 sm:left-9 lg:left-11 z-10 flex flex-col justify-center gap-4 md:gap-6 lg:gap-8 xl:gap-11">
+              <p className="text-wrap text-md sm:text-lg lg:text-xl  xl:text-2xl">
                 Get flat&nbsp;
                 <span className="text-xl md:text-2xl xl:text-3xl font-bold">
                   10%
                 </span>
                 &nbsp; Cashback
               </p>
-              <p className="text-xl sm:text-3xl md:text-4xl lg:text-[40px] md:leading-[40px] lg:leading-[56px] uppercase ">
+              <p className="text-xl sm:text-3xl md:text-4xl md:leading-[40px] lg:leading-[56px] uppercase ">
                 Exciting deals on Televisions
               </p>
               <div>
@@ -65,8 +76,8 @@ const Home = () => {
               alt="Carousel Banner 2"
               className="w-full h-full object-center sm:object-cover"
             />
-            <div className="w-[45%] sm:w-[50%] h-full absolute top-0 left-12 sm:left-20 md:left-24 z-10 flex flex-col justify-center gap-4 md:gap-6 lg:gap-8 xl:gap-11">
-              <p className="text-base xl:text-xl">
+            <div className="w-[50%] h-full absolute top-0 left-1 sm:left-9 lg:left-11 z-10 flex flex-col justify-center gap-4 md:gap-6 lg:gap-8 xl:gap-11">
+              <p className="text-wrap text-md sm:text-lg lg:text-xl  xl:text-2xl">
                 Top&nbsp;
                 <span className="text-xl md:text-2xl xl:text-3xl font-bold">
                   Brands
@@ -94,8 +105,8 @@ const Home = () => {
               alt="Carousel Banner 3"
               className="w-full h-full object-center sm:object-cover"
             />
-            <div className="w-[45%] sm:w-[50%] h-full absolute top-0 left-12 sm:left-20 md:left-24 z-10 flex flex-col justify-center gap-4 md:gap-6 lg:gap-8 xl:gap-11">
-              <p className="text-wrap text-base xl:text-xl">
+            <div className="w-[50%] h-full absolute top-0 left-1 sm:left-9 lg:left-11 z-10 flex flex-col justify-center gap-4 md:gap-6 lg:gap-8 xl:gap-11">
+              <p className="text-wrap text-md sm:text-lg lg:text-xl  xl:text-2xl">
                 Get flat&nbsp;
                 <span className="text-xl md:text-2xl xl:text-3xl font-bold">
                   10%
@@ -120,8 +131,8 @@ const Home = () => {
               alt="Carousel Banner 4"
               className="w-full h-full object-center sm:object-cover"
             />
-            <div className="w-[45%] sm:w-[50%] h-full absolute top-0 left-12 sm:left-20 md:left-24 z-10 flex flex-col justify-center gap-4 md:gap-6 lg:gap-8 xl:gap-11">
-              <p className="text-wrap text-base xl:text-xl">
+            <div className="w-[50%] h-full absolute top-0 left-1 sm:left-9 lg:left-11 z-10 flex flex-col justify-center gap-4 md:gap-6 lg:gap-8 xl:gap-11">
+              <p className="text-wrap text-md sm:text-lg lg:text-xl  xl:text-2xl">
                 Get flat&nbsp;
                 <span className="text-xl md:text-2xl xl:text-3xl font-bold">
                   10%
@@ -143,34 +154,41 @@ const Home = () => {
 
       {/* Best Deals */}
       <div>
-        <p className="text-3xl font-medium text-center my-5">Best Deals</p>
+        <p className="text-2xl md:text-3xl font-medium text-center my-5">
+          Best Deals
+        </p>
+
+        {/* Product Carousel */}
         <div
-          className="w-full bg-gray-300 overflow-hidden p-5"
+          className="w-full bg-gray-300 overflow-y-scroll p-3 sm:p-5"
           id="productCarouselBox"
         >
-          <div id="productCarousel" className="flex flex-nowrap gap-x-5">
+          <div
+            id="productCarousel"
+            className="h-32 md:h-36 lg:h-40 flex flex-nowrap gap-x-5"
+          >
             {product.map((p, inx) => {
               return (
                 <div
-                  className="max-h-[180px] bg-white min-w-[350px] p-2 flex gap-x-4 rounded-md"
+                  className=" bg-white min-w-72 sm:min-w-80 p-2 flex gap-x-4 rounded-md"
                   key={`productCard-${inx}`}
                 >
-                  <div className="w-1/3">
+                  <div className="w-1/3 h-full">
                     <img
                       src={p.image[0]}
                       alt={`Product-${inx}`}
                       className="w-full h-full object-center"
                     />
                   </div>
-                  <div className="flex flex-col justify-center">
-                    <p className="text-lg font-semibold mb-1 whitespace-wrap">
+                  <div className="flex flex-col justify-between">
+                    <p className="text-md sm:text-lg font-semibold whitespace-wrap">
                       {`${p.title.substring(0, 20)}`}
                     </p>
-                    <p className="text-md mb-1">{p.brand}</p>
-                    <p className="text-lg font-semibold mb-2">
+                    <p className="text-base sm:text-md">{p.brand}</p>
+                    <p className="text-md sm:text-lg font-semibold">
                       &#8377;{parseFloat(p.price).toFixed(2)}
                     </p>
-                    <button className="max-w-32 p-2 rounded bg-[#292560] text-white font-semibold hover:bg-[#FDB03D]">
+                    <button className="w-32 p-0 sm:p-1 md:p-2 rounded bg-[#292560] text-white font-semibold hover:bg-[#FDB03D]">
                       ADD TO CART
                     </button>
                   </div>
@@ -209,9 +227,11 @@ const Home = () => {
         </div>
       </div>
 
-      <p className="text-4xl font-semibold text-center py-10">Our Products</p>
+      <p className="text-2xl md:text-3xl lg:text-4xl font-semibold text-center py-10">
+        Our Products
+      </p>
 
-      <div className="w-full flex gap-5">
+      <div className="w-full hidden md:flex gap-5 ">
         <div
           className="w-1/4 shadow-md shadow-gray-500"
           style={{ border: "2px solid rgba(0,0,0,0.6)", borderRadius: "5px" }}
