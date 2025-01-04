@@ -8,7 +8,7 @@ import { RiArrowLeftWideFill, RiArrowRightWideFill } from "react-icons/ri";
 import { Accordion } from "flowbite-react";
 import { FaDotCircle, FaStar } from "react-icons/fa";
 import ReactSlider from "react-slider";
-import "../app.css";
+import "../App.css";
 import ProductList from "../Data/ProductsList";
 
 const Home = () => {
