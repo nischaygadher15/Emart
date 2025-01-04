@@ -1,1 +1,25 @@
+.trackClass {
+  height: 5px;
+  background-color: #dddddd;
+}
 
+.trackClass-1 {
+  background-color: #3f83f8;
+}
+
+@keyframes prdCarousel {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+#productCarousel {
+  animation: prdCarousel 9s infinite linear;
+}
+
+#productCarouselBox:hover #productCarousel {
+  animation-play-state: paused;
+}

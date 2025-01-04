@@ -1,4 +1,4 @@
-import { Carousel } from "flowbite-react";
+import { Badge, Carousel } from "flowbite-react";
 import React, { useState } from "react";
 import c1 from "../assets/Carousel_Images/c_banner1.png";
 import c2 from "../assets/Carousel_Images/c_banner2.png";
@@ -6,42 +6,16 @@ import c3 from "../assets/Carousel_Images/c_banner3.png";
 import c4 from "../assets/Carousel_Images/c_banner4.png";
 import { RiArrowLeftWideFill, RiArrowRightWideFill } from "react-icons/ri";
 import { Accordion } from "flowbite-react";
-import { FaStar } from "react-icons/fa";
+import { FaDotCircle, FaStar } from "react-icons/fa";
+import ReactSlider from "react-slider";
+import "../app.css";
+import ProductList from "../Data/ProductsList";
 
 const Home = () => {
   let [slide, setSlide] = useState(false);
+  let [rangeVal, setRangeVal] = useState([500, 3500]);
+  let product = [...ProductList];
 
-  const accordianTheme = {
-    root: {
-      base: "divide-y divide-gray-200 border-gray-200 dark:divide-gray-700 dark:border-gray-700",
-      flush: {
-        off: "rounded-lg border",
-        on: "border-b",
-      },
-    },
-    content: {
-      base: "p-0 first:rounded-t-lg last:rounded-b-lg dark:bg-gray-900",
-    },
-    title: {
-      arrow: {
-        base: "h-6 w-6 shrink-0",
-        open: {
-          off: "",
-          on: "rotate-180",
-        },
-      },
-      base: "flex w-full items-center justify-between p-5 text-left font-medium text-gray-500 first:rounded-t-lg last:rounded-b-lg dark:text-gray-400",
-      flush: {
-        off: "hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:hover:bg-gray-800 dark:focus:ring-gray-800",
-        on: "bg-transparent dark:bg-transparent",
-      },
-      heading: "",
-      open: {
-        off: "",
-        on: "bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-white",
-      },
-    },
-  };
   return (
     <div className="px-4 sm:px-7 w-full sm:min-w-[640px] md:min-w-[798px] lg:min-w-[1024px]">
       {/* Offer Carousel */}
@@ -167,36 +141,155 @@ const Home = () => {
         </Carousel>
       </div>
 
+      {/* Best Deals */}
+      <div>
+        <p className="text-3xl font-medium text-center my-5">Best Deals</p>
+        <div
+          className="w-full bg-gray-300 overflow-hidden p-5"
+          id="productCarouselBox"
+        >
+          <div id="productCarousel" className="flex flex-nowrap gap-x-5">
+            {product.map((p, inx) => {
+              return (
+                <div
+                  className="max-h-[180px] bg-white min-w-[350px] p-2 flex gap-x-4 rounded-md"
+                  key={`productCard-${inx}`}
+                >
+                  <div className="w-1/3">
+                    <img
+                      src={p.image[0]}
+                      alt={`Product-${inx}`}
+                      className="w-full h-full object-center"
+                    />
+                  </div>
+                  <div className="flex flex-col justify-center">
+                    <p className="text-lg font-semibold mb-1 whitespace-wrap">
+                      {`${p.title.substring(0, 20)}`}
+                    </p>
+                    <p className="text-md mb-1">{p.brand}</p>
+                    <p className="text-lg font-semibold mb-2">
+                      &#8377;{parseFloat(p.price).toFixed(2)}
+                    </p>
+                    <button className="max-w-32 p-2 rounded bg-[#292560] text-white font-semibold hover:bg-[#FDB03D]">
+                      ADD TO CART
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+            {product.map((p, inx) => {
+              return (
+                <div
+                  className="max-h-[180px] bg-white min-w-[350px] p-2 flex gap-x-4 rounded-md"
+                  key={`productCard-${inx}`}
+                >
+                  <div className="w-1/3">
+                    <img
+                      src={p.image[0]}
+                      alt={`Product-${inx}`}
+                      className="w-full h-full object-center"
+                    />
+                  </div>
+                  <div className="flex flex-col justify-center">
+                    <p className="text-lg font-semibold mb-1 whitespace-wrap">
+                      {`${p.title.substring(0, 20)}`}
+                    </p>
+                    <p className="text-md mb-1">{p.brand}</p>
+                    <p className="text-lg font-semibold mb-2">
+                      &#8377;{parseFloat(p.price).toFixed(2)}
+                    </p>
+                    <button className="max-w-32 p-2 rounded bg-[#292560] text-white font-semibold hover:bg-[#FDB03D]">
+                      ADD TO CART
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
       <p className="text-4xl font-semibold text-center py-10">Our Products</p>
 
       <div className="w-full flex gap-5">
         <div
-          className="w-1/4"
+          className="w-1/4 shadow-md shadow-gray-500"
           style={{ border: "2px solid rgba(0,0,0,0.6)", borderRadius: "5px" }}
         >
+          {/* Title */}
           <hr />
           <div className="p-5">
-            <p className="text-xl">Filters</p>
+            <p className="text-xl font-semibold text-[rgba(0,0,0,0.8)]">
+              Filters
+            </p>
           </div>
           <hr />
 
+          {/* Select Category */}
           <div className="p-5">
-            <p className="text-lg">Categories</p>
-            <select name="category" className="p-2">
+            <p className="text-lg font-semibold text-[rgba(0,0,0,0.8)] mb-3">
+              Categories
+            </p>
+            <select
+              name="category"
+              className="p-2 bg-[#F3F4F6] font-semibold text-[rgba(0,0,0,0.8)] rounded"
+            >
               <option value="select">Select Category</option>
+              <option value="select">Category</option>
+              <option value="select">Category</option>
+              <option value="select">Category</option>
+              <option value="select">Category</option>
             </select>
           </div>
           <hr />
 
+          {/* Price Range */}
           <div className="p-5">
-            <Accordion>
-              <Accordion.Panel>
-                <Accordion.Title className="p-3">Price Range</Accordion.Title>
-                <Accordion.Content>
-                  <p>React Range Slider</p>
-                </Accordion.Content>
-              </Accordion.Panel>
-            </Accordion>
+            <p className="text-lg font-semibold text-[rgba(0,0,0,0.8)] mb-3">
+              Price Range
+            </p>
+            <p className="font-semibold text-[rgba(0,0,0,0.8)]">
+              &#8377; {rangeVal[0]} - &#8377; {rangeVal[1]}
+            </p>
+
+            {/* Range Slider */}
+            <div className="py-9">
+              <ReactSlider
+                className="horizontal-slider"
+                thumbClassName=""
+                trackClassName={`trackClass`}
+                defaultValue={[11.111, 77.778]}
+                ariaLabelledby={["first-slider-label", "second-slider-label"]}
+                ariaValuetext={(state) => `Thumb value ${state.valueNow}`}
+                renderThumb={(props, state) => {
+                  const { key, ...restProps } = props;
+                  const prop = { ...restProps };
+                  return (
+                    <div
+                      key={`reactSlider${key}`}
+                      {...prop}
+                      className="outline-none"
+                    >
+                      <p
+                        className="absolute w-5 h-5 flex justify-center items-center 
+                    rounded-full bg-blue-500 text-white"
+                        style={{ top: "-8px", left: "-8px" }}
+                      ></p>
+                    </div>
+                  );
+                }}
+                pearling
+                minDistance={15}
+                withTracks={true}
+                step={0.45}
+                // value={[0, 4500]}
+                onChange={(state) => {
+                  let minVal = Math.round(state[0] * 45);
+                  let maxVal = Math.round(state[1] * 45);
+                  setRangeVal([minVal, maxVal]);
+                }}
+              />
+            </div>
           </div>
           <hr />
 
@@ -207,8 +300,8 @@ const Home = () => {
                 <Accordion.Title className="p-3">Discount</Accordion.Title>
                 <Accordion.Content>
                   <ul>
-                    <li>
-                      <input type="radio" />
+                    <li className="flex items-center">
+                      <input type="radio" className="me-2" />
                       50% or more
                     </li>
                   </ul>
@@ -225,8 +318,8 @@ const Home = () => {
                 <Accordion.Title className="p-3">Electronics</Accordion.Title>
                 <Accordion.Content>
                   <ul>
-                    <li>
-                      <input type="checkbox" />
+                    <li className="flex items-center">
+                      <input type="checkbox" className="me-2" />
                       Accesorries
                     </li>
                   </ul>
@@ -243,8 +336,8 @@ const Home = () => {
                 <Accordion.Title className="p-3">Size</Accordion.Title>
                 <Accordion.Content>
                   <ul>
-                    <li>
-                      <input type="radio" />
+                    <li className="flex items-center">
+                      <input type="radio" className="me-2" />
                       X-Large
                     </li>
                   </ul>

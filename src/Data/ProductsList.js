@@ -1,4 +1,4 @@
-let AmazoneList = [
+let ProductList = [
   {
     title: "Foldsack No. 1 Backpack, Fits 15 Laptops",
     brand: "Fjallraven",
@@ -853,4 +853,4 @@ let AmazoneList = [
   },
 ];
 
-export default AmazoneList;
+export default ProductList;
