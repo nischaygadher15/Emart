@@ -249,7 +249,7 @@ const Home = () => {
 
       <div className="max-w-full flex gap-4">
         {/* Filters */}
-        <div className="w-1/4 hidden md:block">
+        <div className="hidden md:block md:w-1/3 lg:w-1/4">
           <div
             className="w-full h-auto shadow shadow-gray-500 rounded"
             style={{
@@ -432,9 +432,9 @@ const Home = () => {
         </div>
 
         {/* Products Grid */}
-        <div className="w-3/4">
+        <div className="w-full md:w-2/3 lg:w-3/4">
           {/* Grid */}
-          <div className="w-full h-auto grid grid-cols-3 grid-rows-4 gap-4">
+          <div className="w-full h-auto grid md:grid-cols-2 lg:grid-cols-3 grid-rows-4 gap-4">
             {currentItems.map((p, inx) => {
               return (
                 <div
