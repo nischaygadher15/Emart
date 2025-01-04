@@ -1,5 +1,8 @@
+"use client";
+
 import { Badge, Carousel } from "flowbite-react";
-import React, { useState } from "react";
+import { Pagination } from "flowbite-react";
+import React, { useEffect, useState } from "react";
 import c1 from "../assets/Carousel_Images/c_banner1.png";
 import c2 from "../assets/Carousel_Images/c_banner2.png";
 import c3 from "../assets/Carousel_Images/c_banner3.png";
@@ -16,8 +19,21 @@ const Home = () => {
   let [rangeVal, setRangeVal] = useState([500, 3500]);
   let product = [...ProductList];
 
+  // React Pagination
+  let [currentPage, setCurrentPage] = useState(1);
+  let [currentItems, setCurrentItems] = useState([]);
+  const onPageChange = (page) => setCurrentPage(page);
+  let itemsPerPage = 12;
+
+  useEffect(() => {
+    let startProducts = (currentPage - 1) * itemsPerPage;
+    let endProducts = startProducts + itemsPerPage - 1;
+    currentItems = product.slice(startProducts, endProducts + 1);
+    setCurrentItems(currentItems);
+  }, [currentPage]);
+
   return (
-    <div className="px-4 sm:px-7 w-full sm:min-w-[640px] md:min-w-[798px] lg:min-w-[1024px]">
+    <div className="px-4 w-full sm:min-w-[640px] md:min-w-[798px] lg:min-w-[1024px]">
       {/* Offer Carousel */}
       <div className="w-full h-[40vh] sm:h-[60vh] xl:h-[60vh] 2xl:h-[70vh]">
         <Carousel
@@ -160,7 +176,7 @@ const Home = () => {
 
         {/* Product Carousel */}
         <div
-          className="w-full bg-gray-300 overflow-y-scroll p-3 sm:p-5"
+          className="w-full bg-gray-300 overflow-hidden p-3 sm:p-5"
           id="productCarouselBox"
         >
           <div
@@ -180,9 +196,9 @@ const Home = () => {
                       className="w-full h-full object-center"
                     />
                   </div>
-                  <div className="flex flex-col justify-between">
+                  <div className="flex flex-col justify-center">
                     <p className="text-md sm:text-lg font-semibold whitespace-wrap">
-                      {`${p.title.substring(0, 20)}`}
+                      {`${p.title.substring(0, 17)}...`}
                     </p>
                     <p className="text-base sm:text-md">{p.brand}</p>
                     <p className="text-md sm:text-lg font-semibold">
@@ -231,164 +247,239 @@ const Home = () => {
         Our Products
       </p>
 
-      <div className="w-full hidden md:flex gap-5 ">
-        <div
-          className="w-1/4 shadow-md shadow-gray-500"
-          style={{ border: "2px solid rgba(0,0,0,0.6)", borderRadius: "5px" }}
-        >
-          {/* Title */}
-          <hr />
-          <div className="p-5">
-            <p className="text-xl font-semibold text-[rgba(0,0,0,0.8)]">
-              Filters
-            </p>
-          </div>
-          <hr />
+      <div className="max-w-full flex gap-4">
+        {/* Filters */}
+        <div className="w-1/4 hidden md:block">
+          <div
+            className="w-full h-auto shadow shadow-gray-500 rounded"
+            style={{
+              border: "1px solid rgba(180, 180, 180)",
+            }}
+          >
+            {/* Title */}
+            <div className="p-5">
+              <p className="text-2xl font-semibold text-[rgba(0,0,0,0.8)]">
+                Filters
+              </p>
+            </div>
+            <hr
+              style={{
+                border: "1px solid rgba(180, 180, 180)",
+              }}
+            />
 
-          {/* Select Category */}
-          <div className="p-5">
-            <p className="text-lg font-semibold text-[rgba(0,0,0,0.8)] mb-3">
-              Categories
-            </p>
-            <select
-              name="category"
-              className="p-2 bg-[#F3F4F6] font-semibold text-[rgba(0,0,0,0.8)] rounded"
-            >
-              <option value="select">Select Category</option>
-              <option value="select">Category</option>
-              <option value="select">Category</option>
-              <option value="select">Category</option>
-              <option value="select">Category</option>
-            </select>
-          </div>
-          <hr />
+            {/* Select Category */}
+            <div className="p-5">
+              <p className="text-lg font-semibold text-[rgba(0,0,0,0.8)] mb-3">
+                Categories
+              </p>
+              <select
+                name="category"
+                className="w-full p-2 bg-[#F3F4F6] font-semibold text-[rgba(0,0,0,0.8)] rounded"
+              >
+                <option value="select">Select Category</option>
+                <option value="select">Category</option>
+                <option value="select">Category</option>
+                <option value="select">Category</option>
+                <option value="select">Category</option>
+              </select>
+            </div>
+            <hr
+              style={{
+                border: "1px solid rgba(180, 180, 180)",
+              }}
+            />
 
-          {/* Price Range */}
-          <div className="p-5">
-            <p className="text-lg font-semibold text-[rgba(0,0,0,0.8)] mb-3">
-              Price Range
-            </p>
-            <p className="font-semibold text-[rgba(0,0,0,0.8)]">
-              &#8377; {rangeVal[0]} - &#8377; {rangeVal[1]}
-            </p>
+            {/* Price Range */}
+            <div className="p-5">
+              <p className="text-lg font-semibold text-[rgba(0,0,0,0.8)] mb-3">
+                Price Range
+              </p>
+              <p className="font-semibold text-[rgba(0,0,0,0.8)]">
+                &#8377; {rangeVal[0]} - &#8377; {rangeVal[1]}
+              </p>
 
-            {/* Range Slider */}
-            <div className="py-9">
-              <ReactSlider
-                className="horizontal-slider"
-                thumbClassName=""
-                trackClassName={`trackClass`}
-                defaultValue={[11.111, 77.778]}
-                ariaLabelledby={["first-slider-label", "second-slider-label"]}
-                ariaValuetext={(state) => `Thumb value ${state.valueNow}`}
-                renderThumb={(props, state) => {
-                  const { key, ...restProps } = props;
-                  const prop = { ...restProps };
-                  return (
-                    <div
-                      key={`reactSlider${key}`}
-                      {...prop}
-                      className="outline-none"
-                    >
-                      <p
-                        className="absolute w-5 h-5 flex justify-center items-center 
+              {/* Range Slider */}
+              <div className="py-9">
+                <ReactSlider
+                  className="horizontal-slider"
+                  thumbClassName=""
+                  trackClassName={`trackClass`}
+                  defaultValue={[11.111, 77.778]}
+                  ariaLabelledby={["first-slider-label", "second-slider-label"]}
+                  ariaValuetext={(state) => `Thumb value ${state.valueNow}`}
+                  renderThumb={(props, state) => {
+                    const { key, ...restProps } = props;
+                    const prop = { ...restProps };
+                    return (
+                      <div
+                        key={`reactSlider${key}`}
+                        {...prop}
+                        className="outline-none"
+                      >
+                        <p
+                          className="absolute w-5 h-5 flex justify-center items-center 
                     rounded-full bg-blue-500 text-white"
-                        style={{ top: "-8px", left: "-8px" }}
-                      ></p>
-                    </div>
-                  );
-                }}
-                pearling
-                minDistance={15}
-                withTracks={true}
-                step={0.45}
-                // value={[0, 4500]}
-                onChange={(state) => {
-                  let minVal = Math.round(state[0] * 45);
-                  let maxVal = Math.round(state[1] * 45);
-                  setRangeVal([minVal, maxVal]);
-                }}
-              />
+                          style={{ top: "-8px", left: "-8px" }}
+                        ></p>
+                      </div>
+                    );
+                  }}
+                  pearling
+                  minDistance={15}
+                  withTracks={true}
+                  step={0.45}
+                  // value={[0, 4500]}
+                  onChange={(state) => {
+                    let minVal = Math.round(state[0] * 45);
+                    let maxVal = Math.round(state[1] * 45);
+                    setRangeVal([minVal, maxVal]);
+                  }}
+                />
+              </div>
+            </div>
+            <hr
+              style={{
+                border: "1px solid rgba(180, 180, 180)",
+              }}
+            />
+
+            {/* Discount */}
+            <div className="p-5">
+              <Accordion>
+                <Accordion.Panel>
+                  <Accordion.Title className="p-3">Discount</Accordion.Title>
+                  <Accordion.Content>
+                    <ul>
+                      <li className="flex items-center">
+                        <input type="radio" className="me-2" />
+                        50% or more
+                      </li>
+                    </ul>
+                  </Accordion.Content>
+                </Accordion.Panel>
+              </Accordion>
+            </div>
+            <hr
+              style={{
+                border: "1px solid rgba(180, 180, 180)",
+              }}
+            />
+
+            {/* Electronics */}
+            <div className="p-5">
+              <Accordion>
+                <Accordion.Panel>
+                  <Accordion.Title className="p-3">Electronics</Accordion.Title>
+                  <Accordion.Content>
+                    <ul>
+                      <li className="flex items-center">
+                        <input type="checkbox" className="me-2" />
+                        Accesorries
+                      </li>
+                    </ul>
+                  </Accordion.Content>
+                </Accordion.Panel>
+              </Accordion>
+            </div>
+            <hr
+              style={{
+                border: "1px solid rgba(180, 180, 180)",
+              }}
+            />
+
+            {/* Sizes */}
+            <div className="p-5">
+              <Accordion>
+                <Accordion.Panel>
+                  <Accordion.Title className="p-3">Size</Accordion.Title>
+                  <Accordion.Content>
+                    <ul>
+                      <li className="flex items-center">
+                        <input type="radio" className="me-2" />
+                        X-Large
+                      </li>
+                    </ul>
+                  </Accordion.Content>
+                </Accordion.Panel>
+              </Accordion>
+            </div>
+            <hr
+              style={{
+                border: "1px solid rgba(180, 180, 180)",
+              }}
+            />
+
+            {/* Customer Rating */}
+            <div className="p-5">
+              <Accordion>
+                <Accordion.Panel>
+                  <Accordion.Title className="p-3">
+                    Customer Rating
+                  </Accordion.Title>
+                  <Accordion.Content>
+                    <ul>
+                      <li className="flex items-center gap-2">
+                        <input type="radio" />4
+                        <FaStar className="text-yellow-300" />& Above
+                      </li>
+                    </ul>
+                  </Accordion.Content>
+                </Accordion.Panel>
+              </Accordion>
             </div>
           </div>
-          <hr />
-
-          {/* Discount */}
-          <div className="p-5">
-            <Accordion>
-              <Accordion.Panel>
-                <Accordion.Title className="p-3">Discount</Accordion.Title>
-                <Accordion.Content>
-                  <ul>
-                    <li className="flex items-center">
-                      <input type="radio" className="me-2" />
-                      50% or more
-                    </li>
-                  </ul>
-                </Accordion.Content>
-              </Accordion.Panel>
-            </Accordion>
-          </div>
-          <hr />
-
-          {/* Electronics */}
-          <div className="p-5">
-            <Accordion>
-              <Accordion.Panel>
-                <Accordion.Title className="p-3">Electronics</Accordion.Title>
-                <Accordion.Content>
-                  <ul>
-                    <li className="flex items-center">
-                      <input type="checkbox" className="me-2" />
-                      Accesorries
-                    </li>
-                  </ul>
-                </Accordion.Content>
-              </Accordion.Panel>
-            </Accordion>
-          </div>
-          <hr />
-
-          {/* Sizes */}
-          <div className="p-5">
-            <Accordion>
-              <Accordion.Panel>
-                <Accordion.Title className="p-3">Size</Accordion.Title>
-                <Accordion.Content>
-                  <ul>
-                    <li className="flex items-center">
-                      <input type="radio" className="me-2" />
-                      X-Large
-                    </li>
-                  </ul>
-                </Accordion.Content>
-              </Accordion.Panel>
-            </Accordion>
-          </div>
-          <hr />
-
-          {/* Customer Rating */}
-          <div className="p-5">
-            <Accordion>
-              <Accordion.Panel>
-                <Accordion.Title className="p-3">
-                  Customer Rating
-                </Accordion.Title>
-                <Accordion.Content>
-                  <ul>
-                    <li className="flex items-center gap-2">
-                      <input type="radio" />4
-                      <FaStar className="text-yellow-300" />& Above
-                    </li>
-                  </ul>
-                </Accordion.Content>
-              </Accordion.Panel>
-            </Accordion>
-          </div>
-          <hr />
         </div>
 
-        <div className="w-3/4"></div>
+        {/* Products Grid */}
+        <div className="w-3/4">
+          {/* Grid */}
+          <div className="w-full h-auto grid grid-cols-3 grid-rows-4 gap-4">
+            {currentItems.map((p, inx) => {
+              return (
+                <div
+                  className="p-5 rounded shadow shadow-gray-500"
+                  key={`ProductGrid-${inx}`}
+                  style={{
+                    border: "1px solid rgba(180, 180, 180)",
+                  }}
+                >
+                  <img
+                    src={p.image[0]}
+                    alt={`ProductGrid-${inx}`}
+                    className="min-h-60 max-h-60 w-auto mx-auto"
+                  />
+                  <div className="w-full h-32 flex flex-col justify-between">
+                    <p className="w-full font-semibold">
+                      {`${p.title.substring(
+                        0,
+                        window.screen.width > 1024 ? 50 : 35
+                      )}...`}
+                    </p>
+                    <p className="text-blue-500 font-semibold">${p.price}</p>
+                    <div>
+                      <button
+                        className="w-32 p-2 rounded bg-[#292560] text-white font-semibold
+                     hover:bg-[#FDB03D]"
+                      >
+                        ADD TO CART
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* React Pagination */}
+          <div className="flex overflow-x-auto sm:justify-center my-7">
+            <Pagination
+              currentPage={currentPage}
+              totalPages={product.length / itemsPerPage}
+              onPageChange={onPageChange}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
