@@ -2,7 +2,7 @@
 
 import { Badge, Carousel } from "flowbite-react";
 import { Pagination } from "flowbite-react";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import c1 from "../assets/Carousel_Images/c_banner1.png";
 import c2 from "../assets/Carousel_Images/c_banner2.png";
 import c3 from "../assets/Carousel_Images/c_banner3.png";
@@ -25,7 +25,18 @@ const Home = () => {
   // <========================== React Pagination ==========================>
   let [currentPage, setCurrentPage] = useState(1);
   let [currentItems, setCurrentItems] = useState([]);
-  const onPageChange = (page) => setCurrentPage(page);
+  let productBox = useRef(null);
+
+  const onPageChange = (page) => {
+    setCurrentPage(page);
+    console.log(productBox.current?.getBoundingClientRect());
+    window.scrollTo({
+      top:
+        productBox.current?.getBoundingClientRect().y +
+        productBox.current?.getBoundingClientRect().height,
+      behavior: "smooth",
+    });
+  };
   let itemsPerPage = 12;
 
   useEffect(() => {
@@ -79,7 +90,7 @@ const Home = () => {
             <img
               src={c1}
               alt="Carousel Banner 1"
-              className="w-full h-full object-center sm:object-cover"
+              className="w-full h-full object-cover"
             />
             <div className="w-[50%] h-full absolute top-0 left-1 sm:left-9 lg:left-11 z-10 flex flex-col justify-center gap-4 md:gap-6 lg:gap-8 xl:gap-11">
               <p className="text-wrap text-md sm:text-lg lg:text-xl  xl:text-2xl">
@@ -105,7 +116,7 @@ const Home = () => {
             <img
               src={c2}
               alt="Carousel Banner 2"
-              className="w-full h-full object-center sm:object-cover"
+              className="w-full h-full object-cover"
             />
             <div className="w-[50%] h-full absolute top-0 left-1 sm:left-9 lg:left-11 z-10 flex flex-col justify-center gap-4 md:gap-6 lg:gap-8 xl:gap-11">
               <p className="text-wrap text-md sm:text-lg lg:text-xl  xl:text-2xl">
@@ -134,7 +145,7 @@ const Home = () => {
             <img
               src={c3}
               alt="Carousel Banner 3"
-              className="w-full h-full object-center sm:object-cover"
+              className="w-full h-full object-cover"
             />
             <div className="w-[50%] h-full absolute top-0 left-1 sm:left-9 lg:left-11 z-10 flex flex-col justify-center gap-4 md:gap-6 lg:gap-8 xl:gap-11">
               <p className="text-wrap text-md sm:text-lg lg:text-xl  xl:text-2xl">
@@ -160,7 +171,7 @@ const Home = () => {
             <img
               src={c4}
               alt="Carousel Banner 4"
-              className="w-full h-full object-center sm:object-cover"
+              className="w-full h-full object-cover"
             />
             <div className="w-[50%] h-full absolute top-0 left-1 sm:left-9 lg:left-11 z-10 flex flex-col justify-center gap-4 md:gap-6 lg:gap-8 xl:gap-11">
               <p className="text-wrap text-md sm:text-lg lg:text-xl  xl:text-2xl">
@@ -262,7 +273,7 @@ const Home = () => {
         Our Products
       </p>
 
-      <div className="max-w-full flex gap-4">
+      <div className="max-w-full flex gap-4" ref={productBox}>
         {/* Filters */}
         <div className="hidden md:block md:w-1/4">
           <div
