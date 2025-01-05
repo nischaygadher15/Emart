@@ -13,13 +13,16 @@ import { FaDotCircle, FaStar } from "react-icons/fa";
 import ReactSlider from "react-slider";
 import "../App.css";
 import ProductList from "../Data/ProductsList";
+import { IoIosArrowBack } from "react-icons/io";
 
 const Home = () => {
+  // <========================== Variable Declaration ==========================>
   let [slide, setSlide] = useState(true);
   let [rangeVal, setRangeVal] = useState([500, 3500]);
   let product = [...ProductList];
+  let [screenWidth, setScrernWidth] = useState(0);
 
-  // React Pagination
+  // <========================== React Pagination ==========================>
   let [currentPage, setCurrentPage] = useState(1);
   let [currentItems, setCurrentItems] = useState([]);
   const onPageChange = (page) => setCurrentPage(page);
@@ -32,10 +35,22 @@ const Home = () => {
     setCurrentItems(currentItems);
   }, [currentPage]);
 
+  useEffect(() => {
+    window.addEventListener("resize", hadleScrrenSize);
+    setScrernWidth(window.screen.width);
+
+    return () => window.removeEventListener("resize", hadleScrrenSize);
+  }, []);
+
+  // Track Screen size
+  let hadleScrrenSize = () => {
+    setScrernWidth(window.screen.width);
+  };
+
   return (
-    <div className="px-4 w-full sm:min-w-[640px] md:min-w-[798px] lg:min-w-[1024px]">
+    <div className="relative px-4 w-full sm:min-w-[640px] md:min-w-[798px] lg:min-w-[1024px]">
       {/* Offer Carousel */}
-      <div className="w-full h-[40vh] sm:h-[60vh] xl:h-[60vh] 2xl:h-[70vh]">
+      <div className="w-full h-[40vh] sm-[50vh] md:h-[70vh]">
         <Carousel
           slide={slide}
           slideInterval={3000}
@@ -176,12 +191,12 @@ const Home = () => {
 
         {/* Product Carousel */}
         <div
-          className="w-full bg-gray-300 overflow-hidden p-3 sm:p-5"
+          className="w-full bg-gray-300 overflow-y-scroll p-3 sm:p-5"
           id="productCarouselBox"
         >
           <div
             id="productCarousel"
-            className="h-32 md:h-36 lg:h-40 flex flex-nowrap gap-x-5"
+            className="h-36 lg:h-40 flex flex-nowrap gap-x-5"
           >
             {product.map((p, inx) => {
               return (
@@ -196,7 +211,7 @@ const Home = () => {
                       className="w-full h-full object-center"
                     />
                   </div>
-                  <div className="flex flex-col justify-center">
+                  <div className="flex flex-col justify-center gap-y-1 lg:gap-y-2">
                     <p className="text-md sm:text-lg font-semibold whitespace-wrap">
                       {`${p.title.substring(0, 17)}...`}
                     </p>
@@ -204,7 +219,7 @@ const Home = () => {
                     <p className="text-md sm:text-lg font-semibold">
                       &#8377;{parseFloat(p.price).toFixed(2)}
                     </p>
-                    <button className="w-32 p-0 sm:p-1 md:p-2 rounded bg-[#292560] text-white font-semibold hover:bg-[#FDB03D]">
+                    <button className="w-32 p-0 sm:p-1 lg:p-2 rounded bg-[#292560] text-white font-semibold hover:bg-[#FDB03D]">
                       ADD TO CART
                     </button>
                   </div>
@@ -249,7 +264,7 @@ const Home = () => {
 
       <div className="max-w-full flex gap-4">
         {/* Filters */}
-        <div className="hidden md:block md:w-1/3 lg:w-1/4">
+        <div className="hidden md:block md:w-1/4">
           <div
             className="w-full h-auto shadow shadow-gray-500 rounded"
             style={{
@@ -257,7 +272,7 @@ const Home = () => {
             }}
           >
             {/* Title */}
-            <div className="p-5">
+            <div className="p-3 lg:p-5">
               <p className="text-2xl font-semibold text-[rgba(0,0,0,0.8)]">
                 Filters
               </p>
@@ -269,7 +284,7 @@ const Home = () => {
             />
 
             {/* Select Category */}
-            <div className="p-5">
+            <div className="p-3 lg:p-5">
               <p className="text-lg font-semibold text-[rgba(0,0,0,0.8)] mb-3">
                 Categories
               </p>
@@ -291,7 +306,7 @@ const Home = () => {
             />
 
             {/* Price Range */}
-            <div className="p-5">
+            <div className="p-3 lg:p-5">
               <p className="text-lg font-semibold text-[rgba(0,0,0,0.8)] mb-3">
                 Price Range
               </p>
@@ -345,7 +360,7 @@ const Home = () => {
             />
 
             {/* Discount */}
-            <div className="p-5">
+            <div className="p-3 lg:p-5">
               <Accordion>
                 <Accordion.Panel>
                   <Accordion.Title className="p-3">Discount</Accordion.Title>
@@ -367,7 +382,7 @@ const Home = () => {
             />
 
             {/* Electronics */}
-            <div className="p-5">
+            <div className="p-3 lg:p-5">
               <Accordion>
                 <Accordion.Panel>
                   <Accordion.Title className="p-3">Electronics</Accordion.Title>
@@ -389,7 +404,7 @@ const Home = () => {
             />
 
             {/* Sizes */}
-            <div className="p-5">
+            <div className="p-3 lg:p-5">
               <Accordion>
                 <Accordion.Panel>
                   <Accordion.Title className="p-3">Size</Accordion.Title>
@@ -411,7 +426,7 @@ const Home = () => {
             />
 
             {/* Customer Rating */}
-            <div className="p-5">
+            <div className="p-3 lg:p-5">
               <Accordion>
                 <Accordion.Panel>
                   <Accordion.Title className="p-3">
@@ -432,13 +447,16 @@ const Home = () => {
         </div>
 
         {/* Products Grid */}
-        <div className="w-full md:w-2/3 lg:w-3/4">
+        <div className="w-full md:w-3/4">
           {/* Grid */}
-          <div className="w-full h-auto grid md:grid-cols-2 lg:grid-cols-3 grid-rows-4 gap-4">
+          <div
+            className="w-full h-auto grid grid-cols-2 sm:grid-cols-3 
+          grid-rows-4 gap-3 sm:gap-4"
+          >
             {currentItems.map((p, inx) => {
               return (
                 <div
-                  className="p-5 rounded shadow shadow-gray-500"
+                  className="p-3 lg:p-5 rounded shadow shadow-gray-500 flex flex-col justify-between"
                   key={`ProductGrid-${inx}`}
                   style={{
                     border: "1px solid rgba(180, 180, 180)",
@@ -447,20 +465,18 @@ const Home = () => {
                   <img
                     src={p.image[0]}
                     alt={`ProductGrid-${inx}`}
-                    className="min-h-60 max-h-60 w-auto mx-auto"
+                    className="min-h-28 sm:min-h-40 md:min-h-50 lg:min-h-60 max-h-32 sm:max-h-40 md:max-h-50
+                     lg:max-h-60 w-auto mx-auto"
                   />
-                  <div className="w-full h-32 flex flex-col justify-between">
-                    <p className="w-full font-semibold">
-                      {`${p.title.substring(
-                        0,
-                        window.screen.width > 1024 ? 50 : 35
-                      )}...`}
+                  <div className="mt-2 sm:mt-4 w-full flex flex-col justify-between gap-2">
+                    <p className="w-full font-semibold text-wrap leading-4 sm:leading-5">
+                      {`${p.title.substring(0, 50)}...`}
                     </p>
                     <p className="text-blue-500 font-semibold">${p.price}</p>
-                    <div>
+                    <div className="w-full text-center sm:text-left">
                       <button
-                        className="w-32 p-2 rounded bg-[#292560] text-white font-semibold
-                     hover:bg-[#FDB03D]"
+                        className="w-32 p-1 sm:p-2 rounded bg-[#292560] text-sm sm:text-base 
+                        text-white font-semibold hover:bg-[#FDB03D]"
                       >
                         ADD TO CART
                       </button>
@@ -472,12 +488,29 @@ const Home = () => {
           </div>
 
           {/* React Pagination */}
-          <div className="flex overflow-x-auto sm:justify-center my-7">
-            <Pagination
-              currentPage={currentPage}
-              totalPages={product.length / itemsPerPage}
-              onPageChange={onPageChange}
-            />
+          <div className="w-full flex overflow-x-auto justify-center my-7">
+            {screenWidth > 640 ? (
+              <Pagination
+                currentPage={currentPage}
+                totalPages={product.length / itemsPerPage}
+                onPageChange={onPageChange}
+                previousLabel=""
+                nextLabel=""
+                className="text-center"
+                showIcons
+              />
+            ) : (
+              <Pagination
+                layout="table"
+                currentPage={currentPage}
+                totalPages={product.length / itemsPerPage}
+                onPageChange={onPageChange}
+                previousLabel=""
+                nextLabel=""
+                showIcons
+                className="text-center"
+              />
+            )}
           </div>
         </div>
       </div>

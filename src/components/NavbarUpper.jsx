@@ -6,6 +6,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { IoCloseOutline, IoCloseSharp, IoLocationSharp } from "react-icons/io5";
 import { NavLink } from "react-router";
 import { Button, Drawer } from "flowbite-react";
+import { IoMdClose } from "react-icons/io";
 
 const NavbarUpper = () => {
   // Variables
@@ -26,17 +27,20 @@ const NavbarUpper = () => {
     let navIcons = document.getElementById("navIcons");
     let myLogo = document.getElementById("myLogo");
     let navIconsBox = document.getElementById("navIconsBox");
+    let humbergerBar = document.getElementById("humbergerBar");
 
     if (window.screen.width < 1024) {
       if (!isSearching) {
         navIcons.style.display = "none";
         myLogo.classList.add("hidden");
+        humbergerBar.classList.add("hidden");
         navIconsBox.classList.add("w-full");
         navIconsBox.classList.remove("w-3/5");
         searchText.classList.remove("hidden");
       } else {
         navIcons.removeAttribute("style");
         myLogo.classList.remove("hidden");
+        humbergerBar.classList.remove("hidden");
         navIconsBox.classList.remove("w-full");
         navIconsBox.classList.add("w-3/5");
         searchText.classList.add("hidden");
@@ -61,6 +65,7 @@ const NavbarUpper = () => {
           <button
             className="hover:text-yellow-400 p-2 md:hidden text-3xl"
             onClick={() => setIsOpen(true)}
+            id="humbergerBar"
           >
             <GiHamburgerMenu />
           </button>
@@ -92,18 +97,18 @@ const NavbarUpper = () => {
             <input
               type="text"
               id="searchText"
-              className={`hidden lg:block w-full border-gray-300 rounded-s-md me-2 lg:me-0`}
+              className="hidden lg:block w-full border-gray-300 rounded-s-md me-1 sm:me-2 lg:me-0"
               placeholder="Search for products, brands or more..."
             />
 
             <button
               className={`text-black rounded-full lg:rounded-s-none lg:rounded-e-md 
-              p-3 md:p-4 lg:py-4 lg:px-5 text-xl
-              bg-[#FFC516]`}
+              p-2 md:p-3 lg:py-4 lg:px-5 text-xl
+               bg-[#FFC516]`}
               onClick={handleSearch}
               id="searchBtn"
             >
-              {isSearching ? <IoCloseSharp /> : <FaMagnifyingGlass />}
+              {isSearching ? <IoMdClose /> : <FaMagnifyingGlass />}
             </button>
           </li>
 
