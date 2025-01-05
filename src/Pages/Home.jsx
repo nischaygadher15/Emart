@@ -15,6 +15,8 @@ import "../App.css";
 import ProductList from "../Data/ProductsList";
 import { IoIosArrowBack } from "react-icons/io";
 import Filters from "../components/Filters";
+import Footers from "../components/Footers";
+import Offers from "../components/Offers";
 
 const Home = () => {
   // <========================== Variable Declaration ==========================>
@@ -65,7 +67,7 @@ const Home = () => {
 
   return (
     <div className="relative px-4 w-full sm:min-w-[640px] md:min-w-[798px] lg:min-w-[1024px]">
-      {/* Offer Carousel */}
+      {/* <========================= Offer Carousel =========================>  */}
       <div className="w-full h-[40vh] sm-[50vh] md:h-[70vh]">
         <Carousel
           slide={slide}
@@ -199,7 +201,7 @@ const Home = () => {
         </Carousel>
       </div>
 
-      {/* Best Deals */}
+      {/* <========================= Best Deals =========================> */}
       <div>
         <p className="text-2xl md:text-3xl font-medium text-center my-5">
           Best Deals
@@ -207,7 +209,7 @@ const Home = () => {
 
         {/* Product Carousel */}
         <div
-          className="w-full bg-gray-300 overflow-y-scroll p-3 sm:p-5"
+          className="w-full bg-gray-300 overflow-x-scroll overflow-y-hidden p-3 sm:p-5"
           id="productCarouselBox"
         >
           <div
@@ -278,7 +280,7 @@ const Home = () => {
         Our Products
       </p>
 
-      {/* Sort BY */}
+      {/* <========================= Sort By =========================> */}
       <div className="h-14 mb-5 flex justify-between items-center">
         <div>
           <button
@@ -303,14 +305,14 @@ const Home = () => {
         </form>
       </div>
 
-      {/* Product Box */}
+      {/* <========================= Product Box =========================> */}
       <div className="max-w-full flex gap-4" ref={productBox}>
         {/* Filters */}
         <div className="hidden md:block md:w-1/4">
           <Filters range={{ rangeVal, setRangeVal }} />
         </div>
 
-        {/* Products Grid */}
+        {/* <========================= Products Grid =========================> */}
         <div className="w-full md:w-3/4">
           {/* Grid */}
           <div
@@ -379,11 +381,17 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Filter Drawer */}
+      {/* <========================= Filter Drawer =========================> */}
       <Drawer open={filterDrawer} onClose={handleClose} position="left">
         <Drawer.Header title="Drawer" />
         <p>Hello</p>
       </Drawer>
+
+      {/* <========================= Offers =========================> */}
+      <Offers />
+
+      {/* <========================= Footer =========================> */}
+      <Footers />
     </div>
   );
 };
