@@ -23,3 +23,11 @@
 #productCarouselBox:hover #productCarousel {
   animation-play-state: paused;
 }
+
+.productWrapper::-webkit-scrollbar {
+  display: none; /* Hides the scrollbar */
+}
+
+.productWrapper {
+  overflow: -moz-scrollbars-none; /* Hides the scrollbar */
+}
