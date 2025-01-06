@@ -13,7 +13,7 @@ import { FaDotCircle, FaFilter, FaStar } from "react-icons/fa";
 import ReactSlider from "react-slider";
 import "../App.css";
 import ProductList from "../Data/ProductsList";
-import { IoIosArrowBack } from "react-icons/io";
+import { IoIosArrowBack, IoMdClose } from "react-icons/io";
 import Filters from "../components/Filters";
 import Footers from "../components/Footers";
 import Offers from "../components/Offers";
@@ -36,7 +36,8 @@ const Home = () => {
     window.scrollTo({
       top:
         productBox.current?.getBoundingClientRect().y +
-        productBox.current?.getBoundingClientRect().height,
+        productBox.current?.getBoundingClientRect().height +
+        100,
       behavior: "smooth",
     });
   };
@@ -49,17 +50,17 @@ const Home = () => {
     setCurrentItems(currentItems);
   }, [currentPage]);
 
+  // Track Screen size
+  let hadleScrrenSize = () => {
+    setScrernWidth(window.screen.width);
+  };
+
   useEffect(() => {
     window.addEventListener("resize", hadleScrrenSize);
     setScrernWidth(window.screen.width);
 
     return () => window.removeEventListener("resize", hadleScrrenSize);
   }, []);
-
-  // Track Screen size
-  let hadleScrrenSize = () => {
-    setScrernWidth(window.screen.width);
-  };
 
   // <========================== React Pagination ==========================>
   const [filterDrawer, setFilterDrawer] = useState(false);
@@ -89,6 +90,7 @@ const Home = () => {
               <div className="hidden"></div>
             )
           }
+          indicators={false}
           onMouseEnter={() => setSlide(false)}
           onMouseLeave={() => setSlide(true)}
         >
@@ -97,15 +99,15 @@ const Home = () => {
             <img
               src={c1}
               alt="Carousel Banner 1"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-center sm:object-cover"
             />
-            <div className="w-[50%] h-full absolute top-0 left-1 sm:left-9 lg:left-11 z-10 flex flex-col justify-center gap-4 md:gap-6 lg:gap-8 xl:gap-11">
-              <p className="text-wrap text-md sm:text-lg lg:text-xl  xl:text-2xl">
+            <div className="w-[55%] sm:w-[50%] h-full absolute top-0 left-1 sm:left-9 lg:left-11 z-10 flex flex-col justify-center gap-4 md:gap-6 lg:gap-8 xl:gap-11">
+              <p className="flex flex-wrap justify-start items-center text-md sm:text-lg lg:text-xl  xl:text-2xl">
                 Get flat&nbsp;
                 <span className="text-xl md:text-2xl xl:text-3xl font-bold">
                   10%
                 </span>
-                &nbsp; Cashback
+                &nbsp;Cashback
               </p>
               <p className="text-xl sm:text-3xl md:text-4xl md:leading-[40px] lg:leading-[56px] uppercase ">
                 Exciting deals on Televisions
@@ -123,10 +125,10 @@ const Home = () => {
             <img
               src={c2}
               alt="Carousel Banner 2"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-center sm:object-cover"
             />
-            <div className="w-[50%] h-full absolute top-0 left-1 sm:left-9 lg:left-11 z-10 flex flex-col justify-center gap-4 md:gap-6 lg:gap-8 xl:gap-11">
-              <p className="text-wrap text-md sm:text-lg lg:text-xl  xl:text-2xl">
+            <div className="w-[55%] sm:w-[50%] h-full absolute top-0 left-1 sm:left-9 lg:left-11 z-10 flex flex-col justify-center gap-4 md:gap-6 lg:gap-8 xl:gap-11">
+              <p className="flex flex-wrap justify-start items-center text-md sm:text-lg lg:text-xl  xl:text-2xl">
                 Top&nbsp;
                 <span className="text-xl md:text-2xl xl:text-3xl font-bold">
                   Brands
@@ -152,15 +154,15 @@ const Home = () => {
             <img
               src={c3}
               alt="Carousel Banner 3"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-center sm:object-cover"
             />
-            <div className="w-[50%] h-full absolute top-0 left-1 sm:left-9 lg:left-11 z-10 flex flex-col justify-center gap-4 md:gap-6 lg:gap-8 xl:gap-11">
-              <p className="text-wrap text-md sm:text-lg lg:text-xl  xl:text-2xl">
+            <div className="w-[55%] sm:w-[50%] h-full absolute top-0 left-1 sm:left-9 lg:left-11 z-10 flex flex-col justify-center gap-4 md:gap-6 lg:gap-8 xl:gap-11">
+              <p className="flex flex-wrap justify-start items-center text-md sm:text-lg lg:text-xl  xl:text-2xl">
                 Get flat&nbsp;
                 <span className="text-xl md:text-2xl xl:text-3xl font-bold">
                   10%
                 </span>
-                &nbsp; Cashback
+                &nbsp;Cashback
               </p>
               <p className="text-xl sm:text-3xl md:text-4xl lg:text-[40px] md:leading-[40px] lg:leading-[56px] uppercase ">
                 Exciting deals on Coolers
@@ -178,10 +180,10 @@ const Home = () => {
             <img
               src={c4}
               alt="Carousel Banner 4"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-center sm:object-cover"
             />
-            <div className="w-[50%] h-full absolute top-0 left-1 sm:left-9 lg:left-11 z-10 flex flex-col justify-center gap-4 md:gap-6 lg:gap-8 xl:gap-11">
-              <p className="text-wrap text-md sm:text-lg lg:text-xl  xl:text-2xl">
+            <div className="w-[55%] sm:w-[50%] h-full absolute top-0 left-1 sm:left-9 lg:left-11 z-10 flex flex-col justify-center gap-4 md:gap-6 lg:gap-8 xl:gap-11">
+              <p className="flex flex-wrap justify-start items-center text-md sm:text-lg lg:text-xl  xl:text-2xl">
                 Get flat&nbsp;
                 <span className="text-xl md:text-2xl xl:text-3xl font-bold">
                   10%
@@ -288,17 +290,14 @@ const Home = () => {
         text-white font-semibold hover:bg-[#FDB03D]"
             onClick={() => setFilterDrawer(true)}
           >
-            Filters
+            Filter
             <FaFilter />
           </button>
         </div>
 
         <form>
-          <label htmlFor="sortby" className="text-lg font-semibold me-2">
-            Sort by
-          </label>
-          <select className="p-1 rounded" id="sortby">
-            <option value="Select">Select</option>
+          <select className="w-36 sm:w-auto p-1 rounded" id="sortby">
+            <option value="Select">Sort by</option>
             <option value="Select">Price: Low to High</option>
             <option value="Select">Price: High to Low</option>
           </select>
@@ -328,12 +327,31 @@ const Home = () => {
                     border: "1px solid rgba(180, 180, 180)",
                   }}
                 >
-                  <img
-                    src={p.image[0]}
-                    alt={`ProductGrid-${inx}`}
-                    className="min-h-28 sm:min-h-40 md:min-h-50 lg:min-h-60 max-h-32 sm:max-h-40 md:max-h-50
+                  <Carousel
+                    slide={false}
+                    leftControl={
+                      <RiArrowLeftWideFill className="-translate-x-7 text-3xl sm:text-4xl lg:text-5xl text-gray-900" />
+                    }
+                    rightControl={
+                      <RiArrowRightWideFill className="translate-x-7 text-3xl sm:text-4xl lg:text-5xl text-gray-900" />
+                    }
+                    indicators={false}
+                    key={`Product-Carousel-${inx}`}
+                  >
+                    {p.image.map((i, imgInx) => {
+                      return (
+                        <>
+                          <img
+                            src={i}
+                            alt={`ProductGrid-${inx}-${imgInx}`}
+                            className="min-h-28 sm:min-h-40 md:min-h-50 lg:min-h-60 max-h-32 sm:max-h-40 md:max-h-50
                      lg:max-h-60 w-auto mx-auto"
-                  />
+                            key={`ProductImage-${inx}-${imgInx}`}
+                          />
+                        </>
+                      );
+                    })}
+                  </Carousel>
                   <div className="mt-2 sm:mt-4 w-full flex flex-col justify-between gap-2">
                     <p className="w-full font-semibold text-wrap leading-4 sm:leading-5">
                       {`${p.title.substring(0, 50)}...`}
@@ -354,7 +372,7 @@ const Home = () => {
           </div>
 
           {/* React Pagination */}
-          <div className="w-full flex overflow-x-auto justify-center my-7">
+          <div className="w-full flex overflow-x-auto justify-center mt-11">
             {screenWidth > 640 ? (
               <Pagination
                 currentPage={currentPage}
@@ -382,9 +400,16 @@ const Home = () => {
       </div>
 
       {/* <========================= Filter Drawer =========================> */}
-      <Drawer open={filterDrawer} onClose={handleClose} position="left">
-        <Drawer.Header title="Drawer" />
-        <p>Hello</p>
+      <Drawer
+        open={filterDrawer}
+        onClose={handleClose}
+        position="left"
+        className="p-3"
+      >
+        <div className=" absolute top-3 right-3 p-2" onClick={handleClose}>
+          <IoMdClose className="text-2xl" />
+        </div>
+        <Filters range={{ rangeVal, setRangeVal }} />
       </Drawer>
 
       {/* <========================= Offers =========================> */}

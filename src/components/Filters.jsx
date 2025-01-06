@@ -17,7 +17,7 @@ const Filters = ({ range }) => {
         {/* Title */}
         <div className="p-3 lg:p-5">
           <p className="text-2xl font-semibold text-[rgba(0,0,0,0.8)]">
-            Filters
+            Filter
           </p>
         </div>
         <hr

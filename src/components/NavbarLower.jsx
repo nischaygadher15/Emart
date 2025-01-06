@@ -10,7 +10,7 @@ const NavbarLower = () => {
   });
   return (
     <div
-      className="sticky top-0 z-30 w-screen hidden md:flex flex-col justify-center items-center 
+      className="sticky top-[80px] left-0 z-20 w-screen hidden md:flex flex-col justify-center items-center 
       shadow-md shadow-gray-200"
       style={{ backgroundColor: "#292560" }}
     >

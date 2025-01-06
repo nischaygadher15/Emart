@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useRef, useState } from "react";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
 import { FaMoon } from "react-icons/fa6";
@@ -11,15 +12,13 @@ import { IoMdClose } from "react-icons/io";
 const NavbarUpper = () => {
   // Variables
   let [isSearching, setIsSearching] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+  const [barMenu, setBarMenu] = useState(false);
 
-  // Nav Link Style
-  let ddStyle = ({ isActive }) => ({
-    color: isActive ? "#FDB03D" : "black",
-  });
+  const [cartDrawer, setCartDrawer] = useState(false);
+  const handleCartClose = () => setCartDrawer(false);
 
   // Hamburgger Drawer Fun
-  const handleClose = () => setIsOpen(false);
+  const handleMenuClose = () => setBarMenu(false);
 
   // Nav Search Fun
   let handleSearch = () => {
@@ -51,40 +50,80 @@ const NavbarUpper = () => {
     }
   };
 
+  // Track Screen size
+  let [screenWidth, setScrernWidth] = useState(0);
+
+  let hadleScrrenSize = () => {
+    setScrernWidth(window.screen.width);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", hadleScrrenSize);
+    setScrernWidth(window.screen.width);
+
+    return () => window.removeEventListener("resize", hadleScrrenSize);
+  }, []);
+
   return (
     <div
-      className="z-20 w-screen flex flex-col justify-center items-center bg-white 
-    shadow-md shadow-gray-200"
+      className="fixed top-0 z-30 w-screen flex flex-col justify-center items-center bg-white 
+    shadow shadow-gray-400"
     >
       <div
         className="px-4 sm:px-7 w-full sm:min-w-[640px] md:min-w-[798px] lg:min-w-[1024px]
-       h-20 flex justify-between items-center sm:gap-7 md:gap-5"
+       h-16 sm:h-20 flex justify-between items-center sm:gap-7 md:gap-5"
       >
         {/* Logo  */}
         <div className="flex items-center gap-3 text-3xl">
           <button
             className="hover:text-yellow-400 p-2 md:hidden text-3xl"
-            onClick={() => setIsOpen(true)}
+            onClick={() => setBarMenu(true)}
             id="humbergerBar"
           >
             <GiHamburgerMenu />
           </button>
-          <p className="tracking-wide mb-1 sm:mb-2" id="myLogo">
-            <span
-              style={{ color: "#FDB03D" }}
-              className="sm:text-4xl font-semibold"
-            >
-              E
-            </span>
-            lectronic&nbsp;
-            <span
-              style={{ color: "#FDB03D" }}
-              className="sm:text-4xl font-semibold"
-            >
-              M
-            </span>
-            art
-          </p>
+          {screenWidth > 640 ? (
+            <>
+              <p className="tracking-wide mb-1 sm:mb-2" id="myLogo">
+                <span
+                  style={{ color: "#FDB03D" }}
+                  className="sm:text-4xl font-semibold"
+                >
+                  E
+                </span>
+                lectronic&nbsp;
+                <span
+                  style={{ color: "#FDB03D" }}
+                  className="sm:text-4xl font-semibold"
+                >
+                  M
+                </span>
+                art
+              </p>
+            </>
+          ) : (
+            <>
+              <p
+                className="flex items-center tracking-wide mb-1 sm:mb-2"
+                id="myLogo"
+              >
+                <span
+                  style={{ color: "#FDB03D" }}
+                  className="sm:text-4xl font-semibold"
+                >
+                  E
+                </span>
+                -
+                <span
+                  style={{ color: "#FDB03D" }}
+                  className="sm:text-4xl font-semibold"
+                >
+                  M
+                </span>
+                art
+              </p>
+            </>
+          )}
         </div>
 
         {/* Nav-Icons */}
@@ -115,19 +154,22 @@ const NavbarUpper = () => {
           {/* Icons */}
           <li>
             <ul
-              className="hidden sm:flex sm:justify-evenly items-center gap-3"
+              className="flex sm:justify-evenly items-center gap-0 sm:gap-3"
               id="navIcons"
             >
-              <li className="text-3xl p-2 hover:text-yellow-400">
+              <li className="hidden sm:block text-2xl sm:text-3xl p-2 hover:text-yellow-400">
                 <IoLocationSharp />
               </li>
-              <li className="text-3xl p-2 hover:text-yellow-400">
+              <li className="hidden sm:block text-2xl sm:text-3xl p-2 hover:text-yellow-400">
                 <FaMoon />
               </li>
-              <li className="text-3xl p-2 hover:text-yellow-400">
+              <li className="text-2xl sm:text-3xl p-2 hover:text-yellow-400">
                 <FaUser />
               </li>
-              <li className="text-3xl p-2 hover:text-yellow-400">
+              <li
+                className="text-2xl sm:text-3xl p-2 hover:text-yellow-400"
+                onClick={() => setCartDrawer(true)}
+              >
                 <FaShoppingCart />
               </li>
             </ul>
@@ -138,9 +180,9 @@ const NavbarUpper = () => {
       {/* Hamburgger Drawer */}
       <div>
         <Drawer
-          open={isOpen}
+          open={barMenu}
           className="w-screen h-screen"
-          onClose={handleClose}
+          onClose={handleMenuClose}
         >
           <div className="flex justify-between">
             <p className="text-2xl tracking-wide mb-1 sm:mb-2">
@@ -160,7 +202,7 @@ const NavbarUpper = () => {
               art
             </p>
             <button
-              onClick={handleClose}
+              onClick={handleMenuClose}
               className="text-2xl text-gray-500 hover:text-black hover:bg-slate-300 p-2 hover:rounded-md"
             >
               <IoCloseOutline />
@@ -172,6 +214,18 @@ const NavbarUpper = () => {
           </Drawer.Items>
         </Drawer>
       </div>
+
+      {/* Cart Drawer */}
+      <>
+        <Drawer open={cartDrawer} position="right">
+          <div
+            className=" absolute top-3 right-3 p-2"
+            onClick={handleCartClose}
+          >
+            <IoMdClose className="text-2xl" />
+          </div>
+        </Drawer>
+      </>
     </div>
   );
 };
