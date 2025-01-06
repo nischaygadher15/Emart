@@ -1,45 +1,45 @@
 import React from "react";
 import product from "../Data/ProductsList";
 import "../App.css";
+import ReactImageMagnify from "@blacklab/react-image-magnify";
 
 const Product = () => {
   return (
-    <div className="relative px-4 w-full sm:min-w-[640px] md:min-w-[798px] lg:min-w-[1024px]">
+    <div className="relative pt-[80px] md:pt-0 px-4 w-full sm:min-w-[640px] md:min-w-[798px] lg:min-w-[1024px]">
       {/* <========================== Product Detail ==========================> */}
-      <div
-        className="relative w-full flex  justify-end mt-3 mb-11 gap-5 overflow-auto productWrapper"
-        style={{ height: "calc(100vh - 80px)" }}
-      >
-        {/* Product Image Tiles */}
-        <div className="sticky self-start top-5 left-0 flex flex-col justify-start gap-3 h-[80vh]">
-          {product[0].image.map((i, inx) => {
-            return (
-              <div
-                className={`p-1 w-10 rounded-md self-start`}
-                style={{
-                  border: "1px solid gray",
-                }}
-              >
-                <img src={i} alt="..." className="max-h-14 object-contain" />
-              </div>
-            );
-          })}
-        </div>
+      <div className="relative w-full flex flex-col sm:flex-row justify-end mt-3 mb-11 gap-5 overflow-auto productWrapper h-auto sm:h-[80vh]">
+        <div className="sm:sticky w-full sm:w-2/5 h-[70vh] flex self-start top-0 left-0">
+          {/* Product Image Tiles */}
+          <div className="mt-5 flex flex-col justify-start gap-3">
+            {product[0].image.map((i, inx) => {
+              return (
+                <div
+                  className={`p-1 w-10 rounded-md`}
+                  style={{
+                    border: "1px solid gray",
+                  }}
+                >
+                  <img src={i} alt="..." className="max-h-14 object-contain" />
+                </div>
+              );
+            })}
+          </div>
 
-        {/* Product Images */}
-        <div className="sticky self-start top-0 left-0 w-2/5 h-[80vh]">
-          <img
-            src={product[0].image[0]}
-            alt="..."
-            className="w-full h-[70vh] object-contain"
-          />
-          <p className="mt-3 text-gray-500 text-center">
-            Roll over image to zoom in
-          </p>
+          {/* Product Images */}
+          <div className="w-full px-3">
+            <img
+              src={product[0].image[0]}
+              alt="..."
+              className="w-full h-[60vh] object-contain"
+            />
+            <p className="mt-3 text-gray-500 text-center">
+              Roll over image to zoom in
+            </p>
+          </div>
         </div>
 
         {/* Product Features */}
-        <div className="w-3/5 pt-5">
+        <div className="w-full sm:w-3/5 pt-5">
           <p className="text-2xl font-semibold mb-2">Product Full Name</p>
           <p className="">Price:</p>
 
@@ -133,7 +133,7 @@ const Product = () => {
 
           <hr className="my-2" />
 
-          <div className="w-52 flex flex-col gap-5">
+          <div className="w-52 sm:pb-20 flex flex-col gap-5">
             <button className="p-2 bg-[#FFCE12] rounded-s-full rounded-e-full">
               ADD TO CART
             </button>

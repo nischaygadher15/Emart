@@ -19,7 +19,7 @@ const Footers = () => {
   return (
     <div className="px-4 w-full sm:min-w-[640px] md:min-w-[798px] lg:min-w-[1024px]">
       {/* <================================= Footer Services =================================>   */}
-      <div className="px-5 sm:px-11">
+      <div className="sm:px-11">
         <p className="text-3xl font-semibold">Electronics:</p>
         <p className="my-3 text-lg">
           If you're considering a new laptop, looking for a powerful new car
@@ -28,7 +28,7 @@ const Footers = () => {
           on TVs, laptops, cell phones, tablets and iPads, video games, desktop
           computers, cameras and camcorders, audio, video and more
         </p>
-        <div className="flex flex-col gap-5 sm:flex-row justify-between py-11 sm:p-11">
+        <div className="flex flex-wrap gap-5 sm:flex-row justify-start sm:justify-between py-11 md:p-11">
           <div className="flex">
             <FaDolly className="text-5xl text-[#FDB03D]" />
             <div className="ms-3">
@@ -208,7 +208,7 @@ const Footers = () => {
 
       {/* <================================= Footer Links 2 =================================>   */}
 
-      <div className="p-5 sm:p-11">
+      <div className="mt-11 sm:mt-0 sm:p-11">
         <ul>
           <li className="mb-4">
             <h4 className="mb-3 text-2xl font-semibold">Mobile & Tablets :</h4>

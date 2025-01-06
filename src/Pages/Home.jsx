@@ -14,6 +14,7 @@ import ProductList from "../Data/ProductsList";
 import { IoMdClose } from "react-icons/io";
 import Filters from "../components/Filters";
 import Offers from "../components/Offers";
+import ReactImageMagnify from "@blacklab/react-image-magnify";
 
 const Home = () => {
   // <========================== Variable Declaration ==========================>
