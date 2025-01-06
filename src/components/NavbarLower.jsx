@@ -1,6 +1,6 @@
 ("use client");
 import React, { useEffect } from "react";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import { Dropdown } from "flowbite-react";
 import { FaAngleDown } from "react-icons/fa";
 
@@ -10,8 +10,8 @@ const NavbarLower = () => {
   });
   return (
     <div
-      className="sticky top-[80px] left-0 z-20 w-screen hidden md:flex flex-col justify-center items-center 
-      shadow-md shadow-gray-200"
+      className="pt-[80px] z-20 w-screen hidden md:flex flex-col justify-center items-center 
+      shadow-md shadow-gray-700"
       style={{ backgroundColor: "#292560" }}
     >
       <div className="px-4 sm:px-7 w-full sm:min-w-[640px] md:min-w-[798px] lg:min-w-[1024px] h-20 flex justify-between items-center">
@@ -35,11 +35,7 @@ const NavbarLower = () => {
         <nav className="h-full flex items-center">
           <ul className="relative flex items-center md:gap-3 lg:gap-5 text-white font-semibold">
             <li>
-              <NavLink
-                to="/"
-                style={ddStyle}
-                className="hover:text-yellow-400 outline-none"
-              >
+              <NavLink to="/" className="hover:text-yellow-400 outline-none">
                 HOME
               </NavLink>
             </li>
@@ -57,24 +53,60 @@ const NavbarLower = () => {
                 className="mt-2"
               >
                 <div className="grid grid-cols-2 grid-rows-9 gap-x-3 py-2">
-                  <Dropdown.Item>All Mobile Phones </Dropdown.Item>
-                  <Dropdown.Item>All Mobile Accessories </Dropdown.Item>
-                  <Dropdown.Item>Cases & Covers </Dropdown.Item>
-                  <Dropdown.Item>Screen Protectors </Dropdown.Item>
-                  <Dropdown.Item>Power Banks </Dropdown.Item>
-                  <Dropdown.Item>All Certified Refurbished </Dropdown.Item>
-                  <Dropdown.Item>Tablets</Dropdown.Item>
-                  <Dropdown.Item>Wearable Devices</Dropdown.Item>
-                  <Dropdown.Item>Smart Home </Dropdown.Item>
-                  <Dropdown.Item>Musical Instruments</Dropdown.Item>
-                  <Dropdown.Item>Gaming Consoles </Dropdown.Item>
-                  <Dropdown.Item>All Electronics </Dropdown.Item>
-                  <Dropdown.Item>Air Conditioners</Dropdown.Item>
-                  <Dropdown.Item>Refrigerators </Dropdown.Item>
-                  <Dropdown.Item>Washing Machines </Dropdown.Item>
-                  <Dropdown.Item>Kitchen & Home Appliances </Dropdown.Item>
-                  <Dropdown.Item>Heating& Cooling Appliances </Dropdown.Item>
-                  <Dropdown.Item>All Appliances</Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    All Mobile Phones
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    All Mobile Accessories
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    Cases & Covers
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    Screen Protectors
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    Power Banks
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    All Certified Refurbished
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    Tablets
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    Wearable Devices
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    Smart Home
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    Musical Instruments
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    Gaming Consoles
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    All Electronics
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    Air Conditioners
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    Refrigerators
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    Washing Machines
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    Kitchen & Home Appliances
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    Heating& Cooling Appliances
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    All Appliances
+                  </Dropdown.Item>
                 </div>
               </Dropdown>
             </li>
@@ -92,24 +124,60 @@ const NavbarLower = () => {
                 className="py-0 mt-2"
               >
                 <div className="grid grid-cols-2 grid-rows-9 gap-x-3 py-2">
-                  <Dropdown.Item>All Mobile Phones </Dropdown.Item>
-                  <Dropdown.Item>All Mobile Accessories </Dropdown.Item>
-                  <Dropdown.Item>Cases & Covers </Dropdown.Item>
-                  <Dropdown.Item>Screen Protectors </Dropdown.Item>
-                  <Dropdown.Item>Power Banks </Dropdown.Item>
-                  <Dropdown.Item>All Certified Refurbished </Dropdown.Item>
-                  <Dropdown.Item>Tablets</Dropdown.Item>
-                  <Dropdown.Item>Wearable Devices</Dropdown.Item>
-                  <Dropdown.Item>Smart Home </Dropdown.Item>
-                  <Dropdown.Item>Musical Instruments</Dropdown.Item>
-                  <Dropdown.Item>Gaming Consoles </Dropdown.Item>
-                  <Dropdown.Item>All Electronics </Dropdown.Item>
-                  <Dropdown.Item>Air Conditioners</Dropdown.Item>
-                  <Dropdown.Item>Refrigerators </Dropdown.Item>
-                  <Dropdown.Item>Washing Machines </Dropdown.Item>
-                  <Dropdown.Item>Kitchen & Home Appliances </Dropdown.Item>
-                  <Dropdown.Item>Heating& Cooling Appliances </Dropdown.Item>
-                  <Dropdown.Item>All Appliances</Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    All Mobile Phones
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    All Mobile Accessories
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    Cases & Covers
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    Screen Protectors
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    Power Banks
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    All Certified Refurbished
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    Tablets
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    Wearable Devices
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    Smart Home
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    Musical Instruments
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    Gaming Consoles
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    All Electronics
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    Air Conditioners
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    Refrigerators
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    Washing Machines
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    Kitchen & Home Appliances
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    Heating& Cooling Appliances
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="#">
+                    All Appliances
+                  </Dropdown.Item>
                 </div>
               </Dropdown>
             </li>

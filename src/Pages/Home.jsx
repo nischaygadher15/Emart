@@ -1,6 +1,6 @@
 "use client";
 
-import { Badge, Carousel, Drawer } from "flowbite-react";
+import { Carousel, Drawer } from "flowbite-react";
 import { Pagination } from "flowbite-react";
 import React, { useEffect, useRef, useState } from "react";
 import c1 from "../assets/Carousel_Images/c_banner1.png";
@@ -8,14 +8,11 @@ import c2 from "../assets/Carousel_Images/c_banner2.png";
 import c3 from "../assets/Carousel_Images/c_banner3.png";
 import c4 from "../assets/Carousel_Images/c_banner4.png";
 import { RiArrowLeftWideFill, RiArrowRightWideFill } from "react-icons/ri";
-import { Accordion } from "flowbite-react";
-import { FaDotCircle, FaFilter, FaStar } from "react-icons/fa";
-import ReactSlider from "react-slider";
+import { FaFilter } from "react-icons/fa";
 import "../App.css";
 import ProductList from "../Data/ProductsList";
-import { IoIosArrowBack, IoMdClose } from "react-icons/io";
+import { IoMdClose } from "react-icons/io";
 import Filters from "../components/Filters";
-import Footers from "../components/Footers";
 import Offers from "../components/Offers";
 
 const Home = () => {
@@ -414,9 +411,6 @@ const Home = () => {
 
       {/* <========================= Offers =========================> */}
       <Offers />
-
-      {/* <========================= Footer =========================> */}
-      <Footers />
     </div>
   );
 };

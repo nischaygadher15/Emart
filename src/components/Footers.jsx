@@ -17,9 +17,9 @@ import { RiSmartphoneFill } from "react-icons/ri";
 
 const Footers = () => {
   return (
-    <div className="w-full sm:min-w-[640px] md:min-w-[798px] lg:min-w-[1024px]">
+    <div className="px-4 w-full sm:min-w-[640px] md:min-w-[798px] lg:min-w-[1024px]">
       {/* <================================= Footer Services =================================>   */}
-      <div className="px-5 sm:px-0">
+      <div className="px-5 sm:px-11">
         <p className="text-3xl font-semibold">Electronics:</p>
         <p className="my-3 text-lg">
           If you're considering a new laptop, looking for a powerful new car
