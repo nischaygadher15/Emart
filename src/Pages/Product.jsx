@@ -1,18 +1,16 @@
 import React, { useEffect } from "react";
 import product from "../Data/ProductsList";
 import "../App.css";
-import {
-  GlassMagnifier,
-  Magnifier,
-  MOUSE_ACTIVATION,
-  TOUCH_ACTIVATION,
-} from "react-image-magnifiers";
+import { FaMinus, FaPlus } from "react-icons/fa";
 
 const Product = () => {
   return (
     <div className="relative pt-[56px] md:pt-0 px-4 w-full sm:min-w-[640px] md:min-w-[798px] lg:min-w-[1024px]">
       {/* <========================== Product Detail ==========================> */}
-      <div className="sm:relative w-full flex flex-col sm:flex-row justify-end mt-3 mb-11 gap-2 sm:gap-5 overflow-auto productWrapper h-auto sm:h-[80vh]">
+      <div
+        className="sm:relative w-full flex flex-col sm:flex-row justify-end mt-3 mb-11 gap-2 sm:gap-5 
+      overflow-auto productWrapper h-auto sm:h-[80vh]"
+      >
         <div className="sm:sticky w-full sm:w-2/5 h-[50vh] sm:h-[70vh] flex self-start top-0 left-0">
           {/* Product Image Tiles */}
           <div className="mt-5 flex flex-col justify-start gap-3">
@@ -47,9 +45,29 @@ const Product = () => {
         {/* Product Features */}
         <div className="w-full sm:w-3/5 pt-5">
           <p className="text-2xl font-semibold mb-2">Product Full Name</p>
-          <p className="">Price:</p>
+          <p className="text-lg font-semibold">Price:</p>
+          <div className="flex items-center gap-2">
+            <p className="text-lg font-semibold">Quantity</p>
+            <button
+              className=" bg-blue-700 text-white rounded p-3"
+              style={{ border: "2px solid #1A56DB" }}
+            >
+              <FaMinus />
+            </button>
+            <input
+              type="text"
+              className="p-2 w-16 text-center text-lg rounded"
+              defaultValue={1}
+            />
+            <button
+              className=" bg-blue-700 text-white p-3 rounded"
+              style={{ border: "2px solid #1A56DB" }}
+            >
+              <FaPlus />
+            </button>
+          </div>
 
-          <hr className="my-2" />
+          <hr className="my-4" />
 
           <p>$360.00 Free delivery</p>
 
@@ -61,9 +79,9 @@ const Product = () => {
 
           <p>Bank Offer Extra 5% off* with Axis Bank Buzz Credit Card</p>
 
-          <hr className="my-2" />
+          <hr className="my-4" />
 
-          <p>Discription:</p>
+          <p className="text-lg font-semibold">Discription:</p>
           <p>
             This is description of product Lorem ipsum dolor, sit amet
             consectetur adipisicing elit. Laborum, maiores, quas eaque culpa
@@ -137,7 +155,7 @@ const Product = () => {
             inventore harum quidem aperiam. Vero.
           </p>
 
-          <hr className="my-2" />
+          <hr className="my-4" />
 
           <div className="w-52 sm:pb-20 flex flex-col gap-5">
             <button className="p-2 bg-[#FFCE12] rounded-s-full rounded-e-full">
@@ -147,6 +165,7 @@ const Product = () => {
               BUY NOW
             </button>
           </div>
+          <hr className="my-4" />
         </div>
       </div>
     </div>
