@@ -10,17 +10,17 @@ const NavbarLower = () => {
   });
   return (
     <div
-      className="pt-[80px] z-20 w-screen hidden md:flex flex-col justify-center items-center 
+      className="pt-[56px] z-20 w-screen hidden md:flex flex-col justify-center items-center 
       shadow-md shadow-gray-700"
       style={{ backgroundColor: "#292560" }}
     >
-      <div className="px-4 sm:px-7 w-full sm:min-w-[640px] md:min-w-[798px] lg:min-w-[1024px] h-20 flex justify-between items-center">
+      <div className="px-4 sm:px-7 w-full sm:min-w-[640px] md:min-w-[798px] lg:min-w-[1024px] h-14 flex justify-between items-center">
         {/* Choose Category */}
         <div className="h-full flex items-center">
           <select
             id="countries"
             className=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
-               block w-full p-2.5"
+               block w-full p-1.5"
             defaultValue={"default"}
           >
             <option value="default">Choose a Category</option>

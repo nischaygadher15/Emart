@@ -71,7 +71,7 @@ const NavbarUpper = () => {
     >
       <div
         className="px-4 sm:px-7 w-full sm:min-w-[640px] md:min-w-[798px] lg:min-w-[1024px]
-       h-16 sm:h-20 flex justify-between items-center sm:gap-7 md:gap-5"
+       h-14 flex justify-between items-center sm:gap-7 md:gap-5"
       >
         {/* Logo  */}
         <div className="flex items-center gap-3 text-3xl">
@@ -142,7 +142,7 @@ const NavbarUpper = () => {
 
             <button
               className={`text-black rounded-full lg:rounded-s-none lg:rounded-e-md 
-              p-2 md:p-3 lg:py-4 lg:px-5 text-xl
+              py-2 px-4 text-xl
                bg-[#FFC516]`}
               onClick={handleSearch}
               id="searchBtn"
@@ -160,9 +160,9 @@ const NavbarUpper = () => {
               <li className="hidden sm:block text-2xl sm:text-3xl p-2 hover:text-yellow-400">
                 <IoLocationSharp />
               </li>
-              <li className="hidden sm:block text-2xl sm:text-3xl p-2 hover:text-yellow-400">
+              {/* <li className="hidden sm:block text-2xl sm:text-3xl p-2 hover:text-yellow-400">
                 <FaMoon />
-              </li>
+              </li> */}
               <li className="text-2xl sm:text-3xl p-2 hover:text-yellow-400">
                 <FaUser />
               </li>

@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import product from "../Data/ProductsList";
 import "../App.css";
-import ReactImageMagnify from "@blacklab/react-image-magnify";
+import {
+  GlassMagnifier,
+  Magnifier,
+  MOUSE_ACTIVATION,
+  TOUCH_ACTIVATION,
+} from "react-image-magnifiers";
 
 const Product = () => {
   return (
-    <div className="relative pt-[80px] md:pt-0 px-4 w-full sm:min-w-[640px] md:min-w-[798px] lg:min-w-[1024px]">
+    <div className="relative pt-[56px] md:pt-0 px-4 w-full sm:min-w-[640px] md:min-w-[798px] lg:min-w-[1024px]">
       {/* <========================== Product Detail ==========================> */}
-      <div className="relative w-full flex flex-col sm:flex-row justify-end mt-3 mb-11 gap-5 overflow-auto productWrapper h-auto sm:h-[80vh]">
-        <div className="sm:sticky w-full sm:w-2/5 h-[70vh] flex self-start top-0 left-0">
+      <div className="sm:relative w-full flex flex-col sm:flex-row justify-end mt-3 mb-11 gap-2 sm:gap-5 overflow-auto productWrapper h-auto sm:h-[80vh]">
+        <div className="sm:sticky w-full sm:w-2/5 h-[50vh] sm:h-[70vh] flex self-start top-0 left-0">
           {/* Product Image Tiles */}
           <div className="mt-5 flex flex-col justify-start gap-3">
             {product[0].image.map((i, inx) => {
@@ -18,6 +23,7 @@ const Product = () => {
                   style={{
                     border: "1px solid gray",
                   }}
+                  key={`Product-Tiles-${inx}`}
                 >
                   <img src={i} alt="..." className="max-h-14 object-contain" />
                 </div>
@@ -26,15 +32,15 @@ const Product = () => {
           </div>
 
           {/* Product Images */}
-          <div className="w-full px-3">
+          <div className="w-full ps-3 sm:px-3">
             <img
               src={product[0].image[0]}
               alt="..."
-              className="w-full h-[60vh] object-contain"
+              className="w-full h-full object-contain"
             />
-            <p className="mt-3 text-gray-500 text-center">
+            {/* <p className="mt-3 text-gray-500 text-center">
               Roll over image to zoom in
-            </p>
+            </p> */}
           </div>
         </div>
 
