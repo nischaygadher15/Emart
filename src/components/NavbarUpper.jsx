@@ -1,24 +1,25 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import { FaShoppingCart, FaUser } from "react-icons/fa";
+import { FaAngleDown, FaShoppingCart, FaUser } from "react-icons/fa";
 import { FaMoon } from "react-icons/fa6";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoCloseOutline, IoCloseSharp, IoLocationSharp } from "react-icons/io5";
-import { NavLink } from "react-router";
-import { Button, Drawer } from "flowbite-react";
+import { Link, NavLink } from "react-router";
+import { Accordion, Button, Drawer, Dropdown } from "flowbite-react";
 import { IoMdClose } from "react-icons/io";
 
-const NavbarUpper = () => {
+const NavbarUpper = ({ myRef }) => {
   // Variables
   let [isSearching, setIsSearching] = useState(false);
-  const [barMenu, setBarMenu] = useState(true);
-
-  const [cartDrawer, setCartDrawer] = useState(false);
-  const handleCartClose = () => setCartDrawer(false);
+  const [barMenu, setBarMenu] = useState(false);
 
   // Hamburgger Drawer Fun
-  const handleMenuClose = () => setBarMenu(false);
+  const handleMenuClose = () => {
+    console.log(myRef);
+    myRef.current.style.overflowY = "scroll";
+    setBarMenu(false);
+  };
 
   // Nav Search Fun
   let handleSearch = () => {
@@ -79,8 +80,11 @@ const NavbarUpper = () => {
         {/* Logo  */}
         <div className="flex items-center gap-3 text-3xl">
           <button
-            className="hover:text-yellow-400 p-2 md:hidden text-3xl"
-            onClick={() => setBarMenu(true)}
+            className="hover:text-yellow-400 py-2 md:hidden text-3xl"
+            onClick={() => {
+              myRef.current.style.overflowY = "hidden";
+              setBarMenu(true);
+            }}
             id="humbergerBar"
           >
             <GiHamburgerMenu />
@@ -170,8 +174,8 @@ const NavbarUpper = () => {
                 <FaUser />
               </li>
               <li
-                className="text-2xl sm:text-3xl p-2 hover:text-yellow-400"
-                onClick={() => setCartDrawer(true)}
+                className="text-2xl sm:text-3xl py-2 sm:p-2 hover:text-yellow-400"
+                onClick={() => {}}
               >
                 <FaShoppingCart />
               </li>
@@ -190,19 +194,9 @@ const NavbarUpper = () => {
           {/* Drawer Header */}
           <div className="flex justify-between items-center">
             <p className="text-2xl tracking-wide mb-1 sm:mb-2">
-              <span
-                style={{ color: "#FDB03D" }}
-                className="text-3xl font-semibold"
-              >
-                E
-              </span>
+              <span className="text-3xl font-semibold text-[#FDB03D]">E</span>
               lectronic&nbsp;
-              <span
-                style={{ color: "#FDB03D" }}
-                className="text-3xl font-semibold"
-              >
-                M
-              </span>
+              <span className="text-3xl font-semibold text-[#FDB03D]">M</span>
               art
             </p>
             <button
@@ -214,28 +208,198 @@ const NavbarUpper = () => {
           </div>
 
           <Drawer.Items>
-            <ul>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-            </ul>
+            {/* Navbar Links */}
+            <nav className="pt-5">
+              <ul className="flex flex-col justify-between items-center gap-2 font-semibold">
+                <li className="w-full py-2">
+                  {/* Choose Category */}
+                  <select
+                    id="countries"
+                    className="w-full bg-gray-50 border border-gray-300 text-gray-900  rounded-lg p-3"
+                    defaultValue={"default"}
+                  >
+                    <option value="default">Choose a Category</option>
+                    <option value="US">United States</option>
+                    <option value="CA">Canada</option>
+                    <option value="FR">France</option>
+                    <option value="DE">Germany</option>
+                  </select>
+                </li>
+
+                <li className="w-full py-2">
+                  <NavLink
+                    to="/"
+                    className="hover:text-yellow-400 outline-none p-2.5"
+                  >
+                    HOME
+                  </NavLink>
+                </li>
+
+                {/* Electronics */}
+                <li className="w-full py-2">
+                  <Accordion
+                    className="w-full border-0 border-transparent"
+                    collapseAll
+                  >
+                    <Accordion.Panel>
+                      <Accordion.Title className="text-black p-2.5 uppercase font-semibold">
+                        Electronics
+                      </Accordion.Title>
+                      <Accordion.Content className="p-3">
+                        <div className="grid grid-cols-2 grid-rows-9 gap-x-3 gap-y-2 py-2">
+                          <NavLink as={Link} to="#">
+                            All Mobile Phones
+                          </NavLink>
+                          <NavLink as={Link} to="#">
+                            All Mobile Accessories
+                          </NavLink>
+                          <NavLink as={Link} to="#">
+                            Cases & Covers
+                          </NavLink>
+                          <NavLink as={Link} to="#">
+                            Screen Protectors
+                          </NavLink>
+                          <NavLink as={Link} to="#">
+                            Power Banks
+                          </NavLink>
+                          <NavLink as={Link} to="#">
+                            All Certified Refurbished
+                          </NavLink>
+                          <NavLink as={Link} to="#">
+                            Tablets
+                          </NavLink>
+                          <NavLink as={Link} to="#">
+                            Wearable Devices
+                          </NavLink>
+                          <NavLink as={Link} to="#">
+                            Smart Home
+                          </NavLink>
+                          <NavLink as={Link} to="#">
+                            Musical Instruments
+                          </NavLink>
+                          <NavLink as={Link} to="#">
+                            Gaming Consoles
+                          </NavLink>
+                          <NavLink as={Link} to="#">
+                            All Electronics
+                          </NavLink>
+                          <NavLink as={Link} to="#">
+                            Air Conditioners
+                          </NavLink>
+                          <NavLink as={Link} to="#">
+                            Refrigerators
+                          </NavLink>
+                          <NavLink as={Link} to="#">
+                            Washing Machines
+                          </NavLink>
+                          <NavLink as={Link} to="#">
+                            Kitchen & Home Appliances
+                          </NavLink>
+                          <NavLink as={Link} to="#">
+                            Heating& Cooling Appliances
+                          </NavLink>
+                          <NavLink as={Link} to="#">
+                            All Appliances
+                          </NavLink>
+                        </div>
+                      </Accordion.Content>
+                    </Accordion.Panel>
+                  </Accordion>
+                </li>
+
+                {/* Appliance */}
+                <li className="w-full py-2">
+                  <Accordion
+                    className="w-full border-0 border-transparent"
+                    collapseAll
+                  >
+                    <Accordion.Panel>
+                      <Accordion.Title className="text-black p-2.5 uppercase font-semibold">
+                        Appliance
+                      </Accordion.Title>
+                      <Accordion.Content className="p-3">
+                        <div className="grid grid-cols-2 grid-rows-9 gap-x-3 py-2">
+                          <NavLink as={Link} to="#">
+                            All Mobile Phones
+                          </NavLink>
+                          <NavLink as={Link} to="#">
+                            All Mobile Accessories
+                          </NavLink>
+                          <NavLink as={Link} to="#">
+                            Cases & Covers
+                          </NavLink>
+                          <NavLink as={Link} to="#">
+                            Screen Protectors
+                          </NavLink>
+                          <NavLink as={Link} to="#">
+                            Power Banks
+                          </NavLink>
+                          <NavLink as={Link} to="#">
+                            All Certified Refurbished
+                          </NavLink>
+                          <NavLink as={Link} to="#">
+                            Tablets
+                          </NavLink>
+                          <NavLink as={Link} to="#">
+                            Wearable Devices
+                          </NavLink>
+                          <NavLink as={Link} to="#">
+                            Smart Home
+                          </NavLink>
+                          <NavLink as={Link} to="#">
+                            Musical Instruments
+                          </NavLink>
+                          <NavLink as={Link} to="#">
+                            Gaming Consoles
+                          </NavLink>
+                          <NavLink as={Link} to="#">
+                            All Electronics
+                          </NavLink>
+                          <NavLink as={Link} to="#">
+                            Air Conditioners
+                          </NavLink>
+                          <NavLink as={Link} to="#">
+                            Refrigerators
+                          </NavLink>
+                          <NavLink as={Link} to="#">
+                            Washing Machines
+                          </NavLink>
+                          <NavLink as={Link} to="#">
+                            Kitchen & Home Appliances
+                          </NavLink>
+                          <NavLink as={Link} to="#">
+                            Heating& Cooling Appliances
+                          </NavLink>
+                          <NavLink as={Link} to="#">
+                            All Appliances
+                          </NavLink>
+                        </div>
+                      </Accordion.Content>
+                    </Accordion.Panel>
+                  </Accordion>
+                </li>
+
+                <li className="w-full py-2">
+                  <NavLink
+                    to="/"
+                    className="hover:text-yellow-400 outline-none p-2.5"
+                  >
+                    ABOUT US
+                  </NavLink>
+                </li>
+                <li className="w-full py-2">
+                  <NavLink
+                    to="/"
+                    className="hover:text-yellow-400 outline-none p-2.5"
+                  >
+                    CONTACT US
+                  </NavLink>
+                </li>
+              </ul>
+            </nav>
           </Drawer.Items>
         </Drawer>
       </div>
-
-      {/* Cart Drawer */}
-      <>
-        <Drawer open={cartDrawer} position="right">
-          <div
-            className=" absolute top-3 right-3 p-2"
-            onClick={handleCartClose}
-          >
-            <IoMdClose className="text-2xl" />
-          </div>
-        </Drawer>
-      </>
     </div>
   );
 };

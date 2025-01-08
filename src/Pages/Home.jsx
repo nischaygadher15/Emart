@@ -218,7 +218,7 @@ const Home = () => {
             {product.map((p, inx) => {
               return (
                 <div
-                  className=" bg-white min-w-72 sm:min-w-80 p-2 flex gap-x-4 rounded-md"
+                  className=" bg-white min-w-72 sm:min-w-80 p-3 flex gap-x-4 rounded-md"
                   key={`productCard-${inx}`}
                 >
                   <div className="w-1/3 h-full">
@@ -230,7 +230,7 @@ const Home = () => {
                   </div>
                   <div className="flex flex-col justify-center gap-y-1 lg:gap-y-2">
                     <p className="text-md sm:text-lg font-semibold whitespace-wrap">
-                      {`${p.title.substring(0, 17)}...`}
+                      {`${p.title.slice(0, 15)}...`}
                     </p>
                     <p className="text-base sm:text-md">{p.brand}</p>
                     <p className="text-md sm:text-lg font-semibold">
