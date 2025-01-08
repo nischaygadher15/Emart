@@ -5,7 +5,7 @@ import Footers from "../components/Footers";
 
 const DeafaultLayout = ({ children }) => {
   return (
-    <div className="relative max-w-screen h-full flex flex-col items-center overflow-x-hidden">
+    <div className="relative pt-[56px] max-w-screen h-full flex flex-col items-center overflow-x-hidden">
       {/* <========================= Navbar =========================> */}
       <NavbarUpper />
       <NavbarLower />

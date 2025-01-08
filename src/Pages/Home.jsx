@@ -87,7 +87,7 @@ const Home = () => {
               <div className="hidden"></div>
             )
           }
-          indicators={false}
+          indicators={screenWidth > 640 ? false : true}
           onMouseEnter={() => setSlide(false)}
           onMouseLeave={() => setSlide(true)}
         >
@@ -243,11 +243,12 @@ const Home = () => {
                 </div>
               );
             })}
+
             {product.map((p, inx) => {
               return (
                 <div
                   className="max-h-[180px] bg-white min-w-[350px] p-2 flex gap-x-4 rounded-md"
-                  key={`productCard-${inx}`}
+                  key={`productCard2-${inx}`}
                 >
                   <div className="w-1/3">
                     <img
@@ -337,15 +338,14 @@ const Home = () => {
                   >
                     {p.image.map((i, imgInx) => {
                       return (
-                        <>
+                        <React.Fragment key={`ProductImage-${inx}-${imgInx}`}>
                           <img
                             src={i}
                             alt={`ProductGrid-${inx}-${imgInx}`}
                             className="min-h-28 sm:min-h-40 md:min-h-50 lg:min-h-60 max-h-32 sm:max-h-40 md:max-h-50
                      lg:max-h-60 w-auto mx-auto"
-                            key={`ProductImage-${inx}-${imgInx}`}
                           />
-                        </>
+                        </React.Fragment>
                       );
                     })}
                   </Carousel>

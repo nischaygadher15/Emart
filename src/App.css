@@ -12,22 +12,24 @@
     transform: translateX(0);
   }
   to {
-    transform: translateX(-100%);
+    transform: translateX(calc(-320px * 20));
   }
 }
 
 #productCarousel {
-  animation: prdCarousel 9s infinite linear;
+  animation: prdCarousel 120s infinite linear;
 }
 
 #productCarouselBox:hover #productCarousel {
   animation-play-state: paused;
 }
 
-.productWrapper::-webkit-scrollbar {
+.productWrapper::-webkit-scrollbar,
+#productCarouselBox::-webkit-scrollbar {
   display: none; /* Hides the scrollbar */
 }
 
-.productWrapper {
+.productWrapper,
+#productCarouselBox {
   overflow: -moz-scrollbars-none; /* Hides the scrollbar */
 }

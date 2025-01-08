@@ -10,7 +10,7 @@ const NavbarLower = () => {
   });
   return (
     <div
-      className="pt-[56px] z-20 w-screen hidden md:flex flex-col justify-center items-center 
+      className="z-20 w-screen hidden md:flex flex-col justify-center items-center 
       shadow-md shadow-gray-700"
       style={{ backgroundColor: "#292560" }}
     >

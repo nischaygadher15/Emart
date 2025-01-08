@@ -12,7 +12,7 @@ import { IoMdClose } from "react-icons/io";
 const NavbarUpper = () => {
   // Variables
   let [isSearching, setIsSearching] = useState(false);
-  const [barMenu, setBarMenu] = useState(false);
+  const [barMenu, setBarMenu] = useState(true);
 
   const [cartDrawer, setCartDrawer] = useState(false);
   const handleCartClose = () => setCartDrawer(false);
@@ -68,6 +68,9 @@ const NavbarUpper = () => {
     <div
       className="fixed top-0 z-30 w-screen flex flex-col justify-center items-center bg-white 
     shadow shadow-gray-400"
+      style={{
+        borderTop: "1px solid gray",
+      }}
     >
       <div
         className="px-4 sm:px-7 w-full sm:min-w-[640px] md:min-w-[798px] lg:min-w-[1024px]
@@ -142,7 +145,7 @@ const NavbarUpper = () => {
 
             <button
               className={`text-black rounded-full lg:rounded-s-none lg:rounded-e-md 
-              py-2 px-4 text-xl
+              p-2.5 lg:py-2 lg:px-4 text-xl
                bg-[#FFC516]`}
               onClick={handleSearch}
               id="searchBtn"
@@ -184,7 +187,8 @@ const NavbarUpper = () => {
           className="w-screen h-screen"
           onClose={handleMenuClose}
         >
-          <div className="flex justify-between">
+          {/* Drawer Header */}
+          <div className="flex justify-between items-center">
             <p className="text-2xl tracking-wide mb-1 sm:mb-2">
               <span
                 style={{ color: "#FDB03D" }}
@@ -203,14 +207,20 @@ const NavbarUpper = () => {
             </p>
             <button
               onClick={handleMenuClose}
-              className="text-2xl text-gray-500 hover:text-black hover:bg-slate-300 p-2 hover:rounded-md"
+              className="text-3xl text-gray-500 hover:text-black hover:bg-slate-300 p-1 hover:rounded-md"
             >
               <IoCloseOutline />
             </button>
           </div>
 
           <Drawer.Items>
-            <p className="mb-6 text-sm text-gray-500">Drawer Menu</p>
+            <ul>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
           </Drawer.Items>
         </Drawer>
       </div>
