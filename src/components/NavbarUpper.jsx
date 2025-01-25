@@ -67,7 +67,7 @@ const NavbarUpper = ({ myRef }) => {
 
   return (
     <div
-      className="fixed top-0 z-30 w-screen flex flex-col justify-center items-center bg-white 
+      className="fixed top-0 left-0 z-30 w-screen flex flex-col justify-center items-center bg-white 
     shadow shadow-gray-400"
       style={{
         borderTop: "1px solid gray",
