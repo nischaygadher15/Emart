@@ -177,7 +177,9 @@ const NavbarUpper = ({ myRef }) => {
                 className="text-2xl sm:text-3xl py-2 sm:p-2 hover:text-yellow-400"
                 onClick={() => {}}
               >
-                <FaShoppingCart />
+                <NavLink to="/cart">
+                  <FaShoppingCart />
+                </NavLink>
               </li>
             </ul>
           </li>
