@@ -275,8 +275,8 @@ const Footers = () => {
             </ul>
           </li>
           <li className="mb-4">
-            <h4 className="mb-3 text-2xl font-semibold">
-              TV, Audio & Large Appliances :
+            <h4 className="mb-3 text-2xl text-wrap font-semibold">
+              TV, Audio and Large Appliances :
             </h4>
             <ul className="flex flex-wrap gap-5">
               <li>

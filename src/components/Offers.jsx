@@ -6,7 +6,7 @@ import bg from "../assets/bg.jpg";
 const Offers = () => {
   return (
     <div
-      className="my-14 w-full min-h-screen flex flex-col lg:flex-row gap-9 justify-between p-8 sm:p-24"
+      className="my-14 w-full min-h-screen flex flex-col lg:flex-row gap-9 justify-between p-6 sm:p-24"
       style={{
         backgroundImage: `url(${bg})`,
         backgroundPosition: "center",

@@ -328,24 +328,34 @@ const Home = () => {
                   <Carousel
                     slide={false}
                     leftControl={
-                      <RiArrowLeftWideFill className="-translate-x-7 text-3xl sm:text-4xl lg:text-5xl text-gray-900" />
+                      <RiArrowLeftWideFill
+                        className="-translate-x-7 p-1 text-3xl sm:text-4xl lg:text-5xl text-white bg-gray-600 opacity-60
+                      hover:opacity-100 rounded-full"
+                      />
                     }
                     rightControl={
-                      <RiArrowRightWideFill className="translate-x-7 text-3xl sm:text-4xl lg:text-5xl text-gray-900" />
+                      <RiArrowRightWideFill
+                        className="translate-x-7 p-1 text-3xl sm:text-4xl lg:text-5xl text-white bg-gray-600 opacity-60
+                      hover:opacity-100 rounded-full"
+                      />
                     }
                     indicators={false}
                     key={`Product-Carousel-${inx}`}
+                    className="h-32 sm:h-40 md:h-50 lg:h-60 sm:max-h-40 md:max-h-50
+                        lg:max-h-60"
                   >
                     {p.image.map((i, imgInx) => {
                       return (
-                        <React.Fragment key={`ProductImage-${inx}-${imgInx}`}>
+                        <div
+                          key={`ProductImage-${inx}-${imgInx}`}
+                          className="w-full h-full"
+                        >
                           <img
                             src={i}
                             alt={`ProductGrid-${inx}-${imgInx}`}
-                            className="min-h-28 sm:min-h-40 md:min-h-50 lg:min-h-60 max-h-32 sm:max-h-40 md:max-h-50
-                     lg:max-h-60 w-auto mx-auto"
+                            className="w-full h-full"
                           />
-                        </React.Fragment>
+                        </div>
                       );
                     })}
                   </Carousel>
@@ -382,7 +392,7 @@ const Home = () => {
               />
             ) : (
               <Pagination
-                layout="table"
+                layout="navigation"
                 currentPage={currentPage}
                 totalPages={product.length / itemsPerPage}
                 onPageChange={onPageChange}

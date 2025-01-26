@@ -1,12 +1,11 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import { FaAngleDown, FaShoppingCart, FaUser } from "react-icons/fa";
-import { FaMoon } from "react-icons/fa6";
+import { FaShoppingCart, FaUser } from "react-icons/fa";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoCloseOutline, IoCloseSharp, IoLocationSharp } from "react-icons/io5";
 import { Link, NavLink } from "react-router";
-import { Accordion, Button, Drawer, Dropdown } from "flowbite-react";
+import { Accordion, Button, Drawer, Dropdown, Select } from "flowbite-react";
 import { IoMdClose } from "react-icons/io";
 
 const NavbarUpper = ({ myRef }) => {
@@ -213,25 +212,21 @@ const NavbarUpper = ({ myRef }) => {
             {/* Navbar Links */}
             <nav className="pt-5">
               <ul className="flex flex-col justify-between items-center gap-2 font-semibold">
-                <li className="w-full py-2">
+                <li className="w-full flex justify-start p-2">
                   {/* Choose Category */}
-                  <select
-                    id="countries"
-                    className="w-full bg-gray-50 border border-gray-300 text-gray-900  rounded-lg p-3"
-                    defaultValue={"default"}
-                  >
+                  <Select id="countries" className="w-[80%]">
                     <option value="default">Choose a Category</option>
                     <option value="US">United States</option>
                     <option value="CA">Canada</option>
                     <option value="FR">France</option>
                     <option value="DE">Germany</option>
-                  </select>
+                  </Select>
                 </li>
 
                 <li className="w-full py-2">
                   <NavLink
                     to="/"
-                    className="hover:text-yellow-400 outline-none p-2.5"
+                    className="w-full hover:text-yellow-400 outline-none p-2.5"
                   >
                     HOME
                   </NavLink>
@@ -382,17 +377,17 @@ const NavbarUpper = ({ myRef }) => {
                 </li>
 
                 <li className="w-full py-2">
-                  <NavLink
-                    to="/"
-                    className="hover:text-yellow-400 outline-none p-2.5"
+                  <a
+                    href="/"
+                    className="w-full hover:text-yellow-400 outline-none p-2.5"
                   >
                     ABOUT US
-                  </NavLink>
+                  </a>
                 </li>
                 <li className="w-full py-2">
                   <NavLink
                     to="/"
-                    className="hover:text-yellow-400 outline-none p-2.5"
+                    className="w-full hover:text-yellow-400 outline-none p-2.5"
                   >
                     CONTACT US
                   </NavLink>
