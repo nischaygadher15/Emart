@@ -6,6 +6,7 @@ import CheckOut from "../Pages/CheckOut";
 import Payment from "../Pages/Payment";
 import Home from "../Pages/Home";
 import NotFound from "../Pages/NotFound";
+import RegisterUser from "../Pages/RegisterUser";
 
 let myRouter = createBrowserRouter([
   {
@@ -17,6 +18,7 @@ let myRouter = createBrowserRouter([
       { path: "/cart", element: <Cart /> },
       { path: "/checkout", element: <CheckOut /> },
       { path: "/payment", element: <Payment /> },
+      { path: "/reguser", element: <RegisterUser /> },
     ],
   },
   {
