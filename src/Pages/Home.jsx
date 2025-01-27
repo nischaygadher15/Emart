@@ -14,6 +14,7 @@ import ProductList from "../Data/ProductsList";
 import { IoMdClose } from "react-icons/io";
 import Filters from "../components/Filters";
 import Offers from "../components/Offers";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Home = () => {
   // <========================== Variable Declaration ==========================>
@@ -21,6 +22,7 @@ const Home = () => {
   let [rangeVal, setRangeVal] = useState([500, 3500]);
   let product = [...ProductList];
   let [screenWidth, setScrernWidth] = useState(0);
+  let nvg = useNavigate();
 
   // <========================== React Pagination ==========================>
   let [currentPage, setCurrentPage] = useState(1);
@@ -368,6 +370,7 @@ const Home = () => {
                       <button
                         className="w-32 p-1 sm:p-2 rounded bg-[#292560] text-sm sm:text-base 
                         text-white font-semibold hover:bg-[#FDB03D]"
+                        onClick={() => nvg("/product")}
                       >
                         ADD TO CART
                       </button>
