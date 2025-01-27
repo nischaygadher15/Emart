@@ -1,6 +1,5 @@
 import { Button, Label, Select, TextInput } from "flowbite-react";
 import React, { useState } from "react";
-import "react-phone-number-input/style.css";
 import { NavLink } from "react-router";
 
 const RegisterUser = () => {
