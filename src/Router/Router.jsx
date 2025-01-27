@@ -1,4 +1,3 @@
-import { createBrowserRouter } from "react-router";
 import App from "../App";
 import Product from "../Pages/Product";
 import Cart from "../Pages/Cart";
@@ -8,6 +7,7 @@ import Home from "../Pages/Home";
 import NotFound from "../Pages/NotFound";
 import RegisterUser from "../Pages/RegisterUser";
 import LoginUser from "../Pages/LoginUser";
+import { createBrowserRouter } from "react-router-dom";
 
 //Deployment
 
