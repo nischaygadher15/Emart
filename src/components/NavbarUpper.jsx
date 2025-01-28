@@ -170,7 +170,21 @@ const NavbarUpper = ({ myRef }) => {
                 <FaMoon />
               </li> */}
               <li className="text-2xl sm:text-3xl p-2 hover:text-yellow-400">
-                <FaUser />
+                <Dropdown
+                  label={
+                    <>
+                      <FaUser />
+                    </>
+                  }
+                  size="lg"
+                >
+                  <Dropdown.Item as={NavLink} to="/loginuser">
+                    Log In
+                  </Dropdown.Item>
+                  <Dropdown.Item as={NavLink} to="/reguser">
+                    Sign Up
+                  </Dropdown.Item>
+                </Dropdown>
               </li>
               <li
                 className="text-2xl sm:text-3xl py-2 sm:p-2 hover:text-yellow-400"
