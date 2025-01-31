@@ -6,7 +6,7 @@ import { FaAngleDown } from "react-icons/fa";
 
 const NavbarLower = () => {
   let ddStyle = ({ isActive }) => ({
-    color: isActive ? "#FDB03D" : "black",
+    color: isActive ? "#FDB03D" : "white",
   });
   return (
     <div
@@ -35,7 +35,11 @@ const NavbarLower = () => {
         <nav className="h-full flex items-center">
           <ul className="relative flex items-center md:gap-3 lg:gap-5 text-white font-semibold">
             <li>
-              <NavLink to="/" className="hover:text-yellow-400 outline-none">
+              <NavLink
+                to="/"
+                className={`hover:text-yellow-400 outline-none`}
+                style={ddStyle}
+              >
                 HOME
               </NavLink>
             </li>
@@ -183,12 +187,20 @@ const NavbarLower = () => {
             </li>
 
             <li>
-              <NavLink to="/" className="hover:text-yellow-400 outline-none">
+              <NavLink
+                to="/aboutus"
+                className="hover:text-yellow-400 outline-none"
+                style={ddStyle}
+              >
                 ABOUT US
               </NavLink>
             </li>
             <li>
-              <NavLink to="/" className="hover:text-yellow-400 outline-none">
+              <NavLink
+                to="/contactus"
+                className="hover:text-yellow-400 outline-none"
+                style={ddStyle}
+              >
                 CONTACT US
               </NavLink>
             </li>

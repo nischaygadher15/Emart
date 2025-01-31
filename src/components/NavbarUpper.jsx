@@ -5,7 +5,7 @@ import { FaMagnifyingGlass } from "react-icons/fa6";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoCloseOutline, IoCloseSharp, IoLocationSharp } from "react-icons/io5";
 import { Link, NavLink } from "react-router";
-import { Accordion, Button, Drawer, Dropdown, Select } from "flowbite-react";
+import { Accordion, Drawer, Dropdown, Select } from "flowbite-react";
 import { IoMdClose } from "react-icons/io";
 
 const NavbarUpper = ({ myRef }) => {
@@ -171,12 +171,11 @@ const NavbarUpper = ({ myRef }) => {
               </li> */}
               <li className="text-2xl sm:text-3xl p-2 hover:text-yellow-400">
                 <Dropdown
-                  label={
-                    <>
+                  renderTrigger={() => (
+                    <span>
                       <FaUser />
-                    </>
-                  }
-                  size="lg"
+                    </span>
+                  )}
                 >
                   <Dropdown.Item as={NavLink} to="/loginuser">
                     Log In
