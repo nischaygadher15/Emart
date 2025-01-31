@@ -21,6 +21,7 @@ const DeafaultLayout = ({ children }) => {
       top: 0,
       behavior: "smooth",
     });
+    // letStopLoading();
     return window.removeEventListener("load", letStopLoading);
   }, [pathName]);
 
