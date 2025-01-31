@@ -14,16 +14,17 @@ const DeafaultLayout = ({ children }) => {
   let dispatch = useDispatch();
 
   let letStopLoading = useCallback(() => dispatch(StopLoading()));
-  window.addEventListener("load", letStopLoading);
 
   useEffect(() => {
     mainBody.current?.scrollTo({
       top: 0,
       behavior: "smooth",
     });
-    // letStopLoading();
-    return window.removeEventListener("load", letStopLoading);
   }, [pathName]);
+
+  useEffect(() => {
+    letStopLoading();
+  }, []);
 
   {
     /* <========================= Loader =========================> */
