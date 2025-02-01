@@ -5,7 +5,7 @@ import Footers from "../components/Footers";
 import { useLocation } from "react-router-dom";
 import Loader from "../components/Loader";
 import { useDispatch, useSelector } from "react-redux";
-import { selectLoader, StartLoading, StopLoading } from "../Redux/LoaderSlice";
+import { selectLoader, StopLoading } from "../Redux/LoaderSlice";
 
 const DeafaultLayout = ({ children }) => {
   let mainBody = useRef(null);
@@ -26,26 +26,29 @@ const DeafaultLayout = ({ children }) => {
     letStopLoading();
   }, []);
 
-  {
-    /* <========================= Loader =========================> */
-  }
-  if (isLoading) return <Loader />;
+  return isLoading ? (
+    <>
+      {/* <========================= Loader =========================> */}
+      <Loader />
+    </>
+  ) : (
+    <>
+      {/* <========================= Default layout page content =========================> */}
+      <div
+        className="relative pt-[56px] max-w-screen max-h-screen flex flex-col items-center overflow-x-hidden overflow-y-auto"
+        ref={mainBody}
+      >
+        {/* <========================= Navbar =========================> */}
+        <NavbarUpper myRef={mainBody} />
+        <NavbarLower />
+        {/* <========================= Children =========================> */}
 
-  return (
-    <div
-      className="relative pt-[56px] max-w-screen max-h-screen flex flex-col items-center overflow-x-hidden overflow-y-auto"
-      ref={mainBody}
-    >
-      {/* <========================= Navbar =========================> */}
-      <NavbarUpper myRef={mainBody} />
-      <NavbarLower />
-      {/* <========================= Children =========================> */}
+        {children}
 
-      {children}
-
-      {/* <========================= Footer =========================> */}
-      <Footers />
-    </div>
+        {/* <========================= Footer =========================> */}
+        <Footers />
+      </div>
+    </>
   );
 };
 
